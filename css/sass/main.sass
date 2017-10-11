@@ -1,0 +1,73 @@
+$font-sz: 16px
+$body-lh: 1.5
+
+*,
+*:before,
+*:active
+    box-sizing: border-box
+
+body
+    width: 80%
+    margin: 0 auto
+    line-height: $body-lh
+    font-size: $font-sz
+    font-family: Arial, sans-serif
+
+body > *,
+h1, h2, h3, h4,
+p,
+ul
+    margin: 0
+    padding: 0
+
+ul
+    padding-left: 1.25rem
+
+h1
+    margin-top: 1.75rem
+    margin-bottom: 1.75rem
+
+h2
+    margin-top: 1.5rem
+    margin-bottom: 1.5rem
+
+h3
+    margin-top: 1.25rem
+    margin-bottom: 1.25rem
+
+h4
+    margin-top: 1rem
+    margin-bottom: 1rem
+
+p,
+img,
+li
+    margin-bottom: 1rem
+
+img
+    display: inline-block
+    margin-left: 50%
+    transform: translateX(-50%)
+
+li > img
+    display: block
+    margin-top: 1rem
+
+nav 
+    display: flex
+    flex-direction: column
+    
+    & > a
+        text-transform: uppercase
+        text-decoration: none
+        color: inherit
+        font-weight: bold
+        flex: auto
+        text-align: center
+        padding: 1rem 0
+        border: 2px solid #000
+        margin-top: 0.5rem
+        transition: all 0.25s linear
+        
+        &:hover
+            background-color: #d9d9d9
