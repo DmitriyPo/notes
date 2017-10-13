@@ -1,6 +1,4 @@
-*,
-*:before,
-*:active {
+*, *:before, *:active {
   box-sizing: border-box; }
 
 body {
@@ -10,50 +8,40 @@ body {
   font-size: 16px;
   font-family: Arial, sans-serif; }
 
-body > *,
-h1, h2, h3, h4,
-p,
-ul {
+body > *, h1, h2, h3, h4, p, ul {
   margin: 0;
   padding: 0; }
 
-ul {
+.list {
   padding-left: 1.25rem; }
 
-h1 {
+header > h1 {
   margin-top: 1.75rem;
   margin-bottom: 1.75rem; }
-
-h2 {
+header > h2 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem; }
-
-h3 {
+header > h3 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem; }
-
-h4 {
+header > h4 {
   margin-top: 1rem;
   margin-bottom: 1rem; }
 
-p,
-img,
-li {
+section p, section img, section li {
   margin-bottom: 1rem; }
-
-img {
+section img {
   display: inline-block;
   margin-left: 50%;
   transform: translateX(-50%); }
-
-li > img {
+section li > img {
   display: block;
   margin-top: 1rem; }
 
-nav {
+.navigation {
   display: flex;
   flex-direction: column; }
-  nav > a {
+  .navigation > a {
     text-transform: uppercase;
     text-decoration: none;
     color: inherit;
@@ -64,7 +52,7 @@ nav {
     border: 2px solid #000;
     margin-top: 0.5rem;
     transition: all 0.25s linear; }
-    nav > a:hover {
+    .navigation > a:hover {
       background-color: #d9d9d9; }
 
 /*# sourceMappingURL=main.css.map */
