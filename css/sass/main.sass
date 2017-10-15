@@ -56,48 +56,46 @@ section
 .navigation
     display: flex
     flex-direction: column
-    border: 2px solid #000
     text-transform: uppercase
     font-weight: bold
-    min-height: 1rem
-    position: relative
     
     & > *
-        flex: auto
         text-align: center
+        
+    &__category
+        margin-top: 0.5rem
+        border: 2px solid #000
+        display: flex
+        flex-direction: column
+        
+    &__category:hover
+        min-height: auto
     
     &__category_title,
     &__category_items > li
-        padding: 1rem 0
-        margin-top: 0.5rem
         transition: all 0.25s linear
         
         &:hover
             background-color: #d9d9d9
         
-    &__category:hover
-        min-height: auto
+    &__category_title
+        flex: auto
+        padding: 1rem 0
         
-    &__category:hover + &__category_items
-        position: static
-        transform: translate(-50%, 0)
-        opacity: 1   
+        & > span
+            display: inline-block
+            padding: 0 1rem
+            border-right: 2px solid #000
+            border-left: 2px solid #000
+        
+    &__category:hover > &__category_items
+        display: block
     
     &__category_items
-        display: flex
-        flex-direction: column
-        position: absolute
-        margin-left: 50%
-        transform: translate(-50%, -100%)
-        opacity: 0
+        display: none
         
-    &__category_items > li
-        flex: auto
-        
-    &__category_items > li:last-of-type
-        margin-bottom: 0.5rem
-    
     &__link
         color: inherit
         display: block
         width: 100%
+        padding: 1rem 0
