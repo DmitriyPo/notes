@@ -12,9 +12,6 @@ body > *, h1, h2, h3, h4, p, ul {
   margin: 0;
   padding: 0; }
 
-ul {
-  list-style-type: none; }
-
 .list {
   padding-left: 1.25rem; }
 
@@ -48,6 +45,8 @@ section li > img {
   font-weight: bold; }
   .navigation > * {
     text-align: center; }
+  .navigation ul {
+    list-style-type: none; }
   .navigation__category {
     margin-top: 0.5rem;
     border: 2px solid #000;
