@@ -378,11 +378,13 @@
                 
                 <li><em>'grid-template-rows'/'grid-template-columns'</em>: записывает определенные значения для свойств <em>grid-template-rows</em> и <em>grid-template-columns</em> соответственно, и устанавливает для свойства <em>grid-template-areas</em> значение <em>none</em>;
                 
-                    <img src="" alt="">
+                    <p>Выглядит это так:</p>
+                
+                    <img src="https://i.gyazo.com/69992a2dac9f94eb28705a69b352d223.png" alt="first example of grid-template">
                     
-                    <p></p>
+                    <p>И это эквивалентно следующему:</p>
                     
-                    <img src="" alt="">
+                    <img src="https://i.gyazo.com/6903a7ec1aeb36a845311365784a2e7c.png" alt="equivalent to first exaple of grid-template">
                 
                 </li>
                 
@@ -390,19 +392,71 @@
                 
                     <ul class="list">
                     
-                        <li>устанавливает свойство <em>grid-template-areas</em> для перечисленных свойств;</li>
+                        <li>устанавливает свойство <em>grid-template-areas</em> для перечисленных текстовых строк;</li>
                         
                         <li>устанавливает свойство <em>grid-template-rows</em> к значению размера трека (<em>'track-size'</em>), следуя за каждой строкой (заполняя пропущенные значения как <em>auto</em>) и соединяясь в именованых линиях, определенных перед/после каждого размера;</li>
                         
-                        <li></li>
+                        <li>устанавливает свойство <em>grid-template-columns</em> к значению трек-листа, который определен после слэша (или <em>none</em>, если трек-лист не определен).</li>
                         
                     </ul>
+                    
+                    <p>Пример для наглядности:</p>
+                    
+                    <img src="https://i.gyazo.com/7030f4cda0a7aacfe59bf024374872f2.png" alt="second example of grid-template">
+                    
+                    <p>Что эквивалентно:</p>
+                    
+                    <img src="https://i.gyazo.com/2a2335137a9d2b7fb96f9a1c401e68ab.png" alt="equivalent to second exaple of grid-template">
+                    
+                    <p>И создает такую сетку:</p>
+                    
+                    <img src="https://i.gyazo.com/ea1ab9d3b5656f813b6c70308b93e6b5.png" alt="created grid from second exaple of grid-template">
+                    
+                    <p>Следует заметить, что функция <em>repeat()</em> в этом случае не используется, потому шо низзя.</p>
                 
                 </li>
                 
             </ul>
             
         </article>
+        
+        <article>
+           
+            <header class="header">
+               
+                <h4><a href="https://www.w3.org/TR/css-grid-1/#implicit-grids">Неявно определенная сетка</a></h4>
+                
+            </header>
+            
+            <p>Свойства <em>grid-template-rows</em>, <em>grid-template-columns</em> и <em>grid-template-areas</em> определяют фиксированное число треков, что формируют явно определенную сетку. Когда элементы сетки расположены вне этих ограничений, контейнер сетки создает неявно определенные треки сетки путем добавления неявных линий сетке. Эти линии вместе с явно определенной сеткой образовывает неявно определенную сетку. Свойства <em>grid-auto-rows</em>, <em>grid-auto-columns</em> устанавливают размер для этих неявно определенных треков.</p>
+            
+            <p>Свойство <em>grid-auto-flow</em> контролирует автоматическое расположение элементов сетки без их явно определенного размещения. Когда явно определенная сетка заполнена, или если ее не существует, тогда автоматическое размещение будет причиной образования неявно определенных треков сетки.</p>
+            
+        </article>
+        
+        <article>
+           
+            <header class="header">
+               
+                <h4><a href="https://www.w3.org/TR/css-grid-1/#auto-tracks">Установление размера</a> для неявно определенных треков сетки: свойтсва <em>grid-auto-rows</em> и <em>grid-template-columns</em></h4>
+                
+            </header>
+            
+            <img src="https://i.gyazo.com/5c7fce79c17c81564e60fec228aea4de.png" alt="implicit grid tracks">
+            
+            <p>Если элемент сетки размещен в внутри ряда или колонки, размер которого явно не установлен с помощью свойств <em>grid-template-rows</em> и <em>grid-template-columns</em>, создаются неявно определенные треки, чтобы удержать его. Это может произойти либо путем явного расположения внутри ряда или строки, что находятся за пределами сетки, либо с помощью алгоритма автоматического размещения, создающего дополнительные ряды или колонки. Свойства <em>grid-auto-rows</em> и <em>grid-auto-columns</em> устанавливают размер таких неявно созданных треков.</p>
+            
+            <p>Пример для наглядности:</p>
+            
+            <img src="https://i.gyazo.com/9041c04c0c22d084437672bd7f8be3e3.png" alt="styles and layout">
+            
+            <p>И бралалалам! Получили такую вот сетку:</p>
+            
+            <img src="https://i.gyazo.com/49c568a9b4a81bfdf73b2dc315ebbdae.png" alt="grid from grid-auto-* properties">
+            
+        </article>
+        
+        
         
     </section>
     
