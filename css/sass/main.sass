@@ -58,9 +58,13 @@ section
         margin-left: 50%
         transform: translateX(-50%)
         
-    li > img
-        display: block
-        margin-top: 1rem
+    li
+        
+        & > img
+            display: block
+            
+        & > img, & > ul, & > p
+            margin-top: 1rem
 
 .navigation
     display: flex

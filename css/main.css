@@ -42,7 +42,8 @@ section img {
   margin-left: 50%;
   transform: translateX(-50%); }
 section li > img {
-  display: block;
+  display: block; }
+section li > img, section li > ul, section li > p {
   margin-top: 1rem; }
 
 .navigation {
