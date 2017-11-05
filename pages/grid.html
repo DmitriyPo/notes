@@ -827,7 +827,85 @@
             
         </article>
         
+        <article>
+           
+            <header class="header">
+               
+                <h4>Выравнивание с помощью <a href="https://www.w3.org/TR/css-grid-1/#auto-margins">внешних отступов <em>'auto'</em></a></h4>
+                
+            </header>
+            
+            <ul class="list">
+               
+                <li>На протяжении расчетов размеров треков сетки автоматические внешние отступы рассматриваются как 0;</li>
+                
+                <li>Внешние отступы <em>'auto'</em> поглощают положительное свободное пространство до момента выравнивания через <a href="https://www.w3.org/TR/css3-align/#box-alignment-properties">свойства выравнивания внутри блока</a>;</li>
+                
+                <li>Переполняющие элементы игнорируют свои внешние отступы <em>'auto'</em>.</li>
+
+            </ul>
+            
+        </article>
+        
+        <article>
+           
+            <header class="header">
+               
+                <h4><a href="https://www.w3.org/TR/css-grid-1/#row-align">Выравнивание по оси рядов</a>: свойства <em>justify-self и justify-items</em></h4>
+                
+            </header>
+            
+            <p>Элементы сетки могут быть выровнены измерении строки с помощью свойств <a href="https://www.w3.org/TR/css3-align/#propdef-justify-self"><em>justify-self</em></a>, которое применяется индивидуально к элементу, и <a href="https://www.w3.org/TR/css3-align/#propdef-justify-items"><em>justify-items</em></a>, которое применяется к контейнеру в целом.</p>
+            
+        </article>
+        
+        <article>
+           
+            <header class="header">
+               
+                <h4><a href="https://www.w3.org/TR/css-grid-1/#row-align">Выравнивание по оси столбцов</a>: свойства <em>align-self и align-items</em></h4>
+                
+            </header>
+            
+            <p>Элементы сетки могут быть выровнены в измерении блока (что перпендикулярно строке) с помощью свойств <a href="https://www.w3.org/TR/css3-align/#propdef-align-self"><em>align-self</em></a>, которое применяется индивидуально к элементу, и <a href="https://www.w3.org/TR/css3-align/#propdef-align-items"><em>align-items</em></a>, которое применяется к контейнеру в целом.</p>
+            
+        </article>
+        
+        <article>
+           
+            <header class="header">
+               
+                <h4><a href="https://www.w3.org/TR/css-grid-1/#row-align">Выравнивание сетки</a>: свойства <em>justify-content и align-content</em></h4>
+                
+            </header>
+            
+            <p>Если внешние границы сетки не соответствуют границам контента контейнера сетки, треки сетки выравниваются внутри блока, содержащего контент, с помощью свойств <a href="https://www.w3.org/TR/css3-align/#propdef-justify-content"><em>justify-content</em></a>, которое применяется для выравнивания по оси рядов, и <a href="https://www.w3.org/TR/css3-align/#propdef-align-content"><em>align-content</em></a>, которое применяется для выравнивания по оси столбцов.</p>
+            
+            <img src="https://i.gyazo.com/76c5fdf6143256352bfcc1947a76cf3f.png" alt="example">
+            
+            <img src="https://i.gyazo.com/50da34692cf4d30e12c64e87fbe79689.png" alt="result">
+            
+            <p>При отсуствии треков сетки линии по каждой оси выравниваются с начальной границей контейнера.</p>
+            
+            <p>Следует заметить, что некоторые значения этих свойств приводят к тому, что треки сетки могут распологаться на расстоянии друг от друга  (<a href="https://www.w3.org/TR/css-flexbox-1/#valdef-justify-content-space-around"><em>space-around</em></a>, <a href="https://www.w3.org/TR/css-flexbox-1/#valdef-justify-content-space-between"><em>space-between</em></a> и <a href="https://www.w3.org/TR/css3-align/#valdef-align-content-space-evenly"><em>space-evenly</em></a>), или может быть изменен их размер (<a href="https://www.w3.org/TR/css3-align/#valdef-align-content-stretch"><em>stretch</em></a>). Если сетка рассфрагментирована между треками, тогда каждое такое дополнительное определение пространства между этими треками должно быть уменьшеным.</p>
+            
+            <img src="https://i.gyazo.com/39b9d85627e85f0997c6c756787071e6.png" alt="example">
+            
+            <img src="https://i.gyazo.com/181212f5a1a1f5d47f10468084f3b80c.png" alt="grid before">
+            
+            <img src="https://i.gyazo.com/929fe6da53ad34515817ea0328fdfa76.png" alt="grid after">
+            
+            <p>Выравнивание происходит после того, как размер треков определен, поэтому, если размер трека определяется контентом элемента, который охватывает несколько линий сетки, тогда он получит излишнее пространство на этапе выравнивания, чтобы обеспечить пространство для выравнивания.</p>
+            
+        </article>
+        
+        <p>Еще в этой секции описывают <a href="https://www.w3.org/TR/css-grid-1/#grid-baselines">базовые линии контейнера сетки</a>, только это все описывать не буду. К этому вернемся, когда будет нужно.</p>
+        
+        <p>Еще бы тут не мешало все-таки описать все те свойства, описание которых у меня заняло несколько слов и вместо чего я тупо бахнул ссылку. Да, нет мне тут оправдания. С другой стороны, я, кажись, не овладел еще исскуством отсеивать лишнюю инфу, и, по ходу, из всего тут мной написанного кое-что можно откинуть, поскольку не пригодится, или же можно упростить. Поэтому принимается решение вернуться к описыванию всех тех свойств и их значений по необходимости, когда приспичит их использовать. Вооооот.</p>
+        
     </section>
+    
+    
     
 </body>
 </html>
