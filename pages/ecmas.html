@@ -1037,7 +1037,7 @@
                        
                            <ol class="list" type="a">
                                
-                               <li>Имя (<em>name</em>) используется как указатель на метод для выполнения операции <strong>Get(O, name)</strong> (<em>method</em>), которая извлекает значение данного метода, возвращая <strong>O.[[Get]](name, O)</strong>. В целевом объекте <strong>O</strong> эти методы достаются из глобального объекта через наследование, что реализовано цепочкой прототипов.</li>
+                               <li>Имя (<em>name</em>) используется как указатель на метод для выполнения операции <strong>Get(O, name)</strong> (<em>method</em>), которая извлекает значение данного метода, возвращая <strong>O.[[Get]](name, O)</strong>. Для объекта <strong>O</strong> эти методы достаются из глобального объекта через наследование, что реализовано цепочкой прототипов.</li>
                                
                                <li>Получив значение соответствующего метода, алгоритм выполнит проверку того, является ли оно функцией с внутренним методом вызова <strong>[[Call]]</strong> <span>&#8594;</span> <strong>IsCallable(method)</strong>. Если вернулось <strong>true</strong>, тогда:
                                
@@ -1695,9 +1695,9 @@
                    
                    <ol class="list" type="a">
                        
-                       <li>под прицел попадает значение внутреннего слота <strong>argument.[[ProxyHandler]]</strong>. Когда оно <strong>null</strong>, на выходе получим <strong>TypeError</strong>.</li>
+                       <li>под прицел попадает значение внутреннего слота <strong>[[ProxyHandler]]</strong> аргумента (<em>argument</em>) <span>&#8594;</span> <strong>argument.[[ProxyHandler]]</strong>. Когда оно <strong>null</strong>, на выходе получим <strong>TypeError</strong>.</li>
                        
-                       <li>А если не <strong>null</strong>, тогда аргументу будет передано <strong>argument.[[ProxyHandler]]</strong> (<em>target</em>).</li>
+                       <li>А если не <strong>null</strong>, тогда аргументу будет передано значение <strong>argument.[[ProxyHandler]]</strong> (<em>target</em>).</li>
                        
                        <li>Итак, будет выполнено <strong>IsArray(target)</strong>.</li>
                        
@@ -1724,7 +1724,7 @@
                
                <ol class="list">
                   
-                   <li>В аргументе должен быть объект, иначе вернется <strong>false</strong> <span>&#8594;</span> <strong>Type(argument)</strong>.</li>
+                   <li>В аргументе должен быть объект, иначе вернется <strong>false</strong> (выкупаем <span>&#8594;</span> <strong>Type(argument)</strong>).</li>
                    
                    <li>Если значение в аргументе имеет внутренний метод вызова <strong>[[Call]]</strong>, тогда вернется <strong>true</strong>.</li>
                    
@@ -1746,7 +1746,7 @@
                
                <ol class="list">
                   
-                   <li>Если в аргументе не объект, тогда вернется <strong>false</strong> <span>&#8594;</span> <strong>Type(argument)</strong>.</li>
+                   <li>Если в аргументе не объект, тогда вернется <strong>false</strong> (выкупаем <span>&#8594;</span> <strong>Type(argument)</strong>).</li>
                    
                    <li>Если значение в аргументе имеет внутренний метод <strong>[[Construct]]</strong>, тогда вернется <strong>true</strong>.</li>
                    
@@ -1764,7 +1764,7 @@
                    
                </header>
                
-               <p>Эта операция используется для определения того, могут ли дополнительные свойства быть добавлены до объекта <em>O</em>. Выполняются такие шаги:</p>
+               <p>Эта операция используется для определения того, могут ли дополнительные свойства быть добавлены к объекту <em>O</em>. Выполняются такие шаги:</p>
                
                <ol class="list">
                   
@@ -1952,13 +1952,135 @@
                
            </article>
            
+           <article id="equality-comparison">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-abstract-equality-comparison">Равенство</a></h4>
+                   
+               </header>
+               
+               <p>Это сравнение имеет вид <em>x == y</em> и возвращает либо <strong>true</strong>, либо <strong>false</strong>, где <em>x</em> и <em>y</em> - сравниваемые значения. Алгоритм таков:</p>
+               
+               <ol class="list">
+                  
+                   <li>Если <em>x</em> и <em>y</em> имеют одинаковый тип (что проверит <strong>Type(x)</strong> и <strong>Type(y)</strong>), тогда вернется результат выполнения операции <a href="#strict-equality">строгого равенства</a>.</li>
+                   
+                   <li>Если <em>x</em> это <strong>null</strong>, а <em>y</em> - <strong>undefined</strong>, тогда вернется <strong>true</strong> (и если наоборот, то тоже вернется <strong>true</strong>).</li>
+                   
+                   <li>Если <em>x</em> имеет числовой тип (<strong>Type(x)</strong> <span>&#8594;</span> <em>Number</em>), а <em>y</em> - строковый (<strong>Type(y)</strong> <span>&#8594;</span> <em>String</em>), тогда вернется результат сравнения <strong>x == <a href="#tonumber">ToNumber(y)</a></strong>.</li>
+                   
+                   <li>Если же <em>x</em> имеет строковый тип (<strong>Type(x)</strong> <span>&#8594;</span> <em>String</em>), а <em>y</em> - числовой (<strong>Type(y)</strong> <span>&#8594;</span> <em>Number</em>), тогда вернется результат сравнения <strong><a href="#tonumber">ToNumber(x)</a> == y</strong>.</li>
+                   
+                   <li>Если <em>x</em> имеет булевский тип (<strong>Type(x)</strong> <span>&#8594;</span> <em>Boolean</em>), тогда вернется результат сравнения <strong><a href="#tonumber">ToNumber(x)</a> == y</strong>.</li>
+                   
+                   <li>Если же <em>y</em> имеет булевский тип (<strong>Type(y)</strong> <span>&#8594;</span> <em>Boolean</em>), тогда вернется результат сравнения <strong>x == <a href="#tonumber">ToNumber(y)</a></strong>.</li>
+                   
+                   <li>В случае, если значение <em>x</em> имеет строковый, числовой или символьный тип (<strong>Type(x)</strong> <span>&#8594;</span> <em>String / Number / Symbol</em>), а <em>y</em> - объектный (<strong>Type(y)</strong> <span>&#8594;</span> <em>Object</em>), тогда вернется результат сравнения <strong>x == <a href="#toprimitive">ToPrimitive(y)</a></strong>.</li>
+                   
+                   <li>Если же значение <em>x</em> имеет объектный тип (<strong>Type(x)</strong> <span>&#8594;</span> <em>Object</em>), а <em>y</em> - строковый, числовой или символьный тип (<strong>Type(y)</strong> <span>&#8594;</span> <em>String / Number / Symbol</em>), тогда вернется результат сравнения <strong><a href="#toprimitive">ToPrimitive(x)</a> == y</strong>.</li>
+                   
+                   <li>В остальных случаях вернется <strong>false</strong>.</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="strict-equality">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-strict-equality-comparison">Строгое равенство</a></h4>
+                   
+               </header>
+               
+               <p>Это сравнение имеет вид <em>x === y</em> и возвращает либо <strong>true</strong>, либо <strong>false</strong>. Алгоритм имеет вид:</p>
+               
+               <ol class="list">
+                   <li>Если сравниваемые значения <em>x</em> и <em>y</em> имеют разные типы (что выдаст <strong>Type(x)</strong> и <strong>Type(y)</strong>), тогда вернется <strong>false</strong>. Так что строгое сравнение применяется только "для своих" значений.</li>
+                   
+                   <li>Если <em>x</em> имеет числовой тип (<strong>Type(x)</strong> <span>&#8594;</span> <em>Number</em>), тогда 
+                   
+                       <ol class="list">
+                           
+                           <li>когда значение <em>x</em> это <strong>NaN</strong>, вернется <strong>false</strong>.</li>
+                           
+                           <li>когда значение <em>y</em> это <strong>NaN</strong>, вернется <strong>false</strong>.</li>
+                           
+                           <li>когда <em>x</em> и <em>y</em> это одинаковые числовые значения, вернется <strong>true</strong>.</li>
+                           
+                           <li>когда значение <em>x</em> это <strong>+0</strong>, а <em>y</em> - это <strong>-0</strong>, вернется <strong>true</strong> (и когда наоборот, тоже вернется <strong>true</strong>).</li>
+                           
+                           <li>в остальных случаях вернется <strong>false</strong>.</li>
+                           
+                       </ol>
+                   
+                   </li>
+                   
+                   <li>Если же мы имеем другие типы для значений <em>x</em> и <em>y</em>, тогда будет выполнена операция <a href="#samevaluenonnumber"><strong>SameValueNonNumber(x, y)</strong></a>.</li>
+                   
+               </ol>
+               
+               <p>Отличается от <a href="#samevalue"><strong>SameValue</strong></a> в обращении с нулями и <strong>NaN</strong>.</p>
+               
+           </article>
+           
            <article>
               
                <header class="header">
                   
-                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-abstract-relational-comparison">Абстрактное относительное сравнение</a></h4>
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-abstract-relational-comparison">Относительное сравнение</a></h4>
                    
                </header>
+               
+               <p>Здесь, в общем, происходит сравнение одного значения с другим в плане "ху ис биггер": <em>x &#60; y</em>. Возвращается <strong>true</strong>, <strong>false</strong> или <strong>undefined</strong>. Эта операция дополнительно имеет булевский индикатор состояния <em>LeftFirst</em> в качестве параметра, который контролирует порядок выполнения операций над значениями <em>x</em> и <em>y</em>. В EcmaScript вычисление происходят слева направо и по дефолту <em>LeftFirst</em> принимает значение <strong>true</strong> (в этом случае сначала обработается тот параметр, что слева в выражении - <em>x</em>). Бывает и такое, что параметр <em>LeftFirst</em> имеет значение <strong>false</strong>, и в этом случае под внимание попадают сперва те параметры, что справа в выражении (т.е. сначала будет выполнен весь комплекс необходимых событий над параметром <em>y</em> и только потом над <em>x</em>). Алгоритм тут весьма объемный:</p>
+               
+               <ol class="list">
+                   
+                   <li>Сначала смотрит, какое значение имеет <em>LeftFirst</em>. Если <strong>true</strong>, тогда
+                   
+                       <ol class="list" type="a">
+                           
+                           <li>первым под раздачу попадает параметр <em>x</em>, который будет приведен к примитивному значению <span>&#8594;</span> <a href="#toprimitive"><strong>ToPrimitive(x, hint Number)</strong></a> (<em>px</em>);</li>
+                           
+                           <li>и только потом параметр <em>y</em>, который также преобразовывается в примитивное значение <span>&#8594;</span> <a href="#toprimitive"><strong>ToPrimitive(y, hint Number)</strong></a> (<em>py</em>).</li>
+                           
+                       </ol>
+                   
+                   </li>
+                   
+                   <li>А если <strong>false</strong>, тогда
+                   
+                       <ol class="list" type="a">
+                           
+                           <li>первым обращенным в примитивное значение будет параметр <em>y</em> <span>&#8594;</span> <a href="#toprimitive"><strong>ToPrimitive(y, hint Number)</strong></a> (<em>py</em>);</li>
+                           
+                           <li>затем параметр <em>x</em> <span>&#8594;</span> <a href="#toprimitive"><strong>ToPrimitive(x, hint Number)</strong></a> (<em>px</em>).</li>
+                           
+                       </ol>
+                   
+                   </li>
+                   
+                   <li>Если случилось так, что полученные примитивные значения для <em>x</em> и <em>y</em> (<em>px</em> и <em>py</em> соответственно) строки, тогда
+                   
+                       <ol class="list">
+                           
+                           <li>если строка <em>y</em> (<em>py</em>) это приставка значения <em>x</em> (<em>px</em>), вернется <strong>false</strong> (этот результат конкретно для выражения <em>x &#60; y</em>, так что если знак обратный, вернется <strong>true</strong>);</li>
+                           
+                           <li>если строка <em>x</em> (<em>px</em>) это приставка <em>y</em> (<em>py</em>), вернется <strong>true</strong>;</li>
+                           
+                           <li>если же ни одна из полученных строк не является приставкой для другой, значит, под прицел сравнения попадет первый символ строки, т.е. кодовая единица. Само значение этой кодовой единицы - целое число. И имеет она одинаковый наименьший не отрицательный индекс в каждой из строк. Обязательное условие: под сравнение попадают только те кодовые единицы, что не равны друг другу. Так что, если символ с индексом 0 в кажой строке одинаковый, в оборот пойдет следующий символ с индексом 1 и тд. Поэтому, если значение этой кодовой единицы больше той, которая в другой строке, тогда получим соответсвующий результат на выходе. Типа, вот кодовая единица строки <em>x</em> (<em>px</em>) - это <em>m</em>, а для строки <em>y</em> (<em>py</em>) - <em>n</em>. И, если действительно <em>m &#60; n</em>, тогда вернется <strong>true</strong> (в противном случае - <strong>false</strong>). К примеру, выражение <em>"ab" &#60; "az"</em> вернет <strong>true</strong>, поскольку символы <em>"а"</em> одинаковы и сравнение потопает дальше вверх по индексам элементов строк, пока не найдет отличающиеся. Если не найдет и обе строки одинаковы, будет <strong>false</strong>. И, кстати, операция сравнения заканчивается на первом попавшемся символе, что не равен другому. Т.е. выражение <em>"abz" &#60; "az"</em> вернет <strong>true</strong>, поскольку состыковка произошла с символами <em>"b"</em> и <em>"z"</em>, и <em>"z"</em> победил.</li>
+                           
+                           <li></li>
+                           <li></li>
+                           <li></li>
+                           
+                       </ol>
+                   
+                   </li>
+                   <li></li>
+                   
+               </ol>
                
            </article>
            
