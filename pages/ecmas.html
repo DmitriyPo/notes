@@ -227,7 +227,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="value_attr">
                            
                             <td>[[Value]] (значение)</td>
                             
@@ -237,7 +237,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="write_attr">
                            
                             <td>[[Writable]] (перезаписи)</td>
                             
@@ -247,7 +247,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="enum_attr">
                            
                             <td>[[Enumerable]] (перечислимый)</td>
                             
@@ -257,7 +257,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="config_attr">
                            
                             <td>[[Configurable]] (настраиваемый)</td>
                             
@@ -293,7 +293,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="get_attr">
                            
                             <td>[[Get]] (получение)</td>
                             
@@ -303,7 +303,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="set_attr">
                            
                             <td>[[Set]] (запись)</td>
                             
@@ -445,7 +445,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-get_proto">
                            
                             <td>[[GetPrototypeOf]]</td>
                             
@@ -455,7 +455,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-set_proto">
                            
                             <td>[[SetPrototypeOf]]</td>
                              
@@ -465,7 +465,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-isextensible">
                            
                             <td>[[IsExtensible]]</td>
                              
@@ -475,7 +475,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal_prev_exts">
                            
                             <td>[[PreventExtensions]]</td>
                              
@@ -485,27 +485,27 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-get_prop_o">
                            
                             <td>[[GetOwnProperty]]</td>
                              
                             <td>(<em>propertyKey</em>) <span>&#8594;</span> Undefined | Property Descriptor</td>
                             
-                            <td>Возвращает значение <em>Property Descriptor</em> (описание) для собственного свойства объекта, если оно существует (ключ свойства передается тут в качетсве аргумента - <em>propertyKey</em>). А если возвращает <strong>undefined</strong>, тогда это означает, что такого свойства не существует в этом объекте.</td>
+                            <td>Возвращает значение <em>Property Descriptor</em> (описание) для собственного свойства объекта, если оно существует (ключ свойства передается тут в качетсве аргумента - <em>propertyKey</em>). А если возвращает <strong>undefined</strong>, тогда такого свойства не существует в этом объекте.</td>
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-define_prop_o">
                            
                             <td>[[DefineOwnProperty]]</td>
                              
                             <td>(<em>propertyKey, Property Descriptor</em>) <span>&#8594;</span> Boolean</td>
                             
-                            <td>Создает или меняет свобственное свойство (его ключ определен в первом аргументе - <em>propertyKey</em>), чтобы оно имело состояние, которое описывается во втором аргументе (Property Descriptor). Возвращает <strong>true</strong>, если свойство было создано/обновлено. В противном случае - <strong>false</strong>, если существует одно из следующих состояний: свойство не настраиваемое, объект не расширяемый или свойства не существует.</td>
+                            <td>Создает или меняет свобственное свойство (его ключ определен в аргументе <em>propertyKey</em>), чтобы оно имело состояние, которое описывается во втором аргументе (Property Descriptor). Возвращает <strong>true</strong>, если свойство было создано/обновлено. В противном случае - <strong>false</strong>, если существует одно из следующих состояний: свойство не настраиваемое, объект не расширяемый или свойства не существует.</td>
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-has_prop">
                            
                             <td>[[HasProperty]]</td>
                              
@@ -515,7 +515,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-get">
                            
                             <td>[[Get]]</td>
                              
@@ -525,7 +525,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-set">
                            
                             <td>[[Set]]</td>
                              
@@ -535,7 +535,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-delete">
                            
                             <td>[[Delete]]</td>
                              
@@ -545,7 +545,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-prop_keys_o">
                            
                             <td>[[OwnPropertyKeys]]</td>
                              
@@ -581,7 +581,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-call">
                            
                             <td>[[Call]]</td>
                             
@@ -591,7 +591,7 @@
                             
                         </tr>
                         
-                        <tr>
+                        <tr id="internal-construct">
                            
                             <td>[[Construct]]</td>
                              
@@ -773,15 +773,15 @@
                        
                            <ol class="list" type="a">
                                
-                               <li>Принадлежность базового значения ссылки (<strong>base</strong>) к примитивному типу проверяется с помощью <strong>HasPrimitiveBase(V)</strong>. Если операция <strong>HasPrimitiveBase(V)</strong> возвращает <strong>true</strong>, это говорит о том, что базовое значение ссылки (<strong>base</strong>) относится к примитивному типу, и оно должно быть преобразовано в соответствующий объект. Такое превращение при этом сценарии сделает операция <a href="#toobject"><strong>ToObject(base)</strong></a>. Это необходимо для дальнейшего выполнения метода <strong>[[Get]]</strong>.</li>
+                               <li>Принадлежность базового значения ссылки (<strong>base</strong>) к примитивному типу проверяется с помощью <strong>HasPrimitiveBase(V)</strong>. Если операция <strong>HasPrimitiveBase(V)</strong> возвращает <strong>true</strong>, это говорит о том, что базовое значение ссылки (<strong>base</strong>) относится к примитивному типу, и оно должно быть преобразовано в соответствующий объект. Такое превращение при этом сценарии сделает операция <a href="#toobject"><strong>ToObject(base)</strong></a>. Это необходимо для дальнейшего выполнения метода <a href="#internal_get"><strong>[[Get]]</strong></a>.</li>
                                
-                               <li>Когда базовое значение ссылки (<strong>base</strong>) уже имеет тип <em>Object</em>, тогда алгоритм запустит внутренний метод <em>[[Get]]</em>. Имя ключа свойства объекта, на которое ссылаются, возвращает операция <strong>GetReferencedName(V)</strong>, а значение <strong>this</strong> для определения контекста выполнения - операция <a href="#getthisvalue"><strong>GetThisValue(V)</strong></a>. Итак, на выходе мы получим <strong><em>base.[[Get]](GetReferencedName(V), GetThisValue(V))</em></strong>.</li>
+                               <li>Когда базовое значение ссылки (<strong>base</strong>) уже имеет тип <em>Object</em>, тогда алгоритм запустит внутренний метод <a href="#internal_get"><strong>[[Get]]</strong></a>. Имя ключа свойства объекта, на которое ссылаются, возвращает операция <strong>GetReferencedName(V)</strong>, а значение <strong>this</strong> для определения контекста выполнения - операция <a href="#getthisvalue"><strong>GetThisValue(V)</strong></a>. Итак, будет выполнено <span>&#8594;</span> <strong><em>base.[[Get]](GetReferencedName(V), GetThisValue(V))</em></strong>.</li>
                                
                            </ol>
                        
                        </li>
                        
-                       <li>Когда операция <strong>IsPropertyReference(V)</strong> вернула <strong>false</strong>, тогда алгоритм приступит к последнему плацдарму. На этом этапе алгоритму ничего не остается, как признать базовое значение ссылки записью окружения (<strong>Environment Record</strong>). Для записи окружения будет применен внутренний метод <a href="#getbindingvalue"><strong>GetBindingValue(N, S)</strong></a>, который возвращает значение привязки. Он получает имя привязки, на которое ссылаются (его возвращает операция <strong>GetReferencedName(V)</strong>), и булевское значение, которое будет либо <strong>true</strong>, либо <strong>false</strong> в зависимости от того, строгая ли данная привязка, или нет (этот признак возвращается с помощью операции <strong>IsStrictReference(V)</strong>, что определяет строгость семантики ссылки). В конечном итоге будет выполнено: <strong><em>base.GetBindingValue(GetReferencedName(V), IsStrictReference(V))</em></strong>.</li>
+                       <li>Когда операция <strong>IsPropertyReference(V)</strong> вернула <strong>false</strong>, тогда алгоритм приступит к последнему плацдарму. На этом этапе алгоритму ничего не остается, как признать базовое значение ссылки записью окружения (<strong>Environment Record</strong>). Для записи окружения будет применен внутренний метод <a href="#get_bind_value"><strong>GetBindingValue(N, S)</strong></a>, который возвращает значение привязки. Он получает имя привязки, на которое ссылаются (его возвращает операция <strong>GetReferencedName(V)</strong>), и булевское значение, которое будет либо <strong>true</strong>, либо <strong>false</strong> в зависимости от того, строгая ли данная привязка, или нет (этот признак возвращается с помощью операции <strong>IsStrictReference(V)</strong>, что определяет строгость семантики ссылки). Будет выполнено <span>&#8594;</span> <strong><em>base.GetBindingValue(GetReferencedName(V), IsStrictReference(V))</em></strong>.</li>
                        
                    </ol>
                    
@@ -813,9 +813,9 @@
                               
                                <li>Если разигрывется такой сценарий, тогда еще подключится проверка строгости ссылки с помощью операции <strong>IsStrictReference(V)</strong> (она определяет, имеет ли ссылка строгую семантику, или нет). Если <strong>IsStrictReference(V)</strong> вернет <strong>true</strong>, тогда <span>&#8594;</span> <strong>ReferenceError</strong>, ведь строгая семантика ссылки при отсуствии в ней значения - это несовместимое сочетание.</li>
                                
-                               <li>В другом случае, когда семантика не является строгой <span>&#8594;</span> <strong>IsStrictReference(V)</strong> вернет <strong>false</strong> <span>&#8594;</span> тогда алгоритм выполнит операцию записи <strong>Set</strong>. Для этого ему нужно выудить глобальный объект (<strong>globalObj</strong>), который будет использоваться в качестве целевого. Это выполнит операция <strong>GetGlobalObject()</strong>.</li>
+                               <li>В другом случае, когда семантика не является строгой <span>&#8594;</span> <strong>IsStrictReference(V)</strong> вернет <strong>false</strong> <span>&#8594;</span> тогда алгоритм выполнит операцию записи <a href="#set-abstr"><strong>Set</strong></a>. Для этого ему нужно выудить глобальный объект (<strong>globalObj</strong>), который будет использоваться в качестве целевого. Это выполнит операция <a href="#get_glob_obj"><strong>GetGlobalObject()</strong></a>.</li>
                                
-                               <li>Обращение к глобальному объекту (<strong>globalObj</strong>) исходит из того, что он является хранилищем всех ссылок, которые находятся в его области видимости, в виде свойств. Потому берется имя ссылки (как ключ свойства), которое возвращает <strong>GetReferencedName(V)</strong>, и выполняется операция записи <strong>Set(globalObj, GetReferencedName(V), W, false)</strong>, которая запишет значение <strong>W</strong> вместо <strong>undefined</strong> для целевого глобального объекта (<strong>globalObj</strong>) в его контексте выполнения. Булевское значение <strong>false</strong> (последний аргумент в списке) это признак строгости ссылки.</li>
+                               <li>Обращение к глобальному объекту (<strong>globalObj</strong>) исходит из того, что он является хранилищем всех ссылок, которые находятся в его области видимости, в виде свойств. Потому берется имя ссылки (как ключ свойства), которое возвращает <strong>GetReferencedName(V)</strong>, и выполняется операция записи <strong><a href="#set-abstr">Set</a>(globalObj, GetReferencedName(V), W, false)</strong>, которая запишет значение <strong>W</strong> вместо <strong>undefined</strong> для целевого глобального объекта (<strong>globalObj</strong>) в его контексте выполнения. Булевское значение <strong>false</strong> (последний аргумент в списке) это признак строгости ссылки.</li>
                                
                            </ol>
                        
@@ -827,17 +827,17 @@
                                
                                <li>Эта проверка напоминает матрешку, поэтому будет еще выполнена операция <strong>HasPrimitiveBase(V)</strong>. Когда <strong>HasPrimitiveBase(V)</strong> вернет <strong>true</strong>, тогда примитивное базовое значение ссылки будет преобразовано в соответствующий примитивному типу (<em>Boolean, String, Symbol, или Number</em>) объект с помощью операции <a href="#toobject"><strong>ToObject(base)</strong></a>.</li>
                                
-                               <li>В случае, когда <strong>HasPrimitiveBase(V)</strong> возвращает <strong>false</strong>, тогда базовое значение ссылки уже имеет тип <em>Object</em>. Получив базовое значение в виде объекта, оно может использоваться как целевой объект для внутреннего метода <strong>[[Set]]</strong>. Он берет ключ свойства, что соответствует имени, на которое ссылаются (его вернет операция <strong>GetReferencedName(V)</strong>), и записывает ему новое значение <strong>W</strong> вместо текущего <strong>V</strong>, выполняя это в контексте значения <strong>this</strong> (его возвращает операция <strong>GetThisValue(V)</strong>). При успешном своем завершении метод <strong>[[Set]]</strong> вернет <strong>true</strong>. Тут еще подтянется проверка <strong>IsStrictReference(V)</strong>. На выходе это выглядит так: <strong><em>base.[[Set]](GetReferencedName(V), W, GetThisValue(V))</em></strong> (<em>succes</em>).</li>
+                               <li>В случае, когда <strong>HasPrimitiveBase(V)</strong> возвращает <strong>false</strong>, тогда базовое значение ссылки уже имеет тип <em>Object</em>. Получив базовое значение в виде объекта, оно может использоваться как целевой объект для внутреннего метода <a href="#internal-set"><strong>[[Set]]</strong></a>. Он берет ключ свойства, что соответствует имени, на которое ссылаются (его вернет операция <strong>GetReferencedName(V)</strong>), и записывает ему новое значение <strong>W</strong> вместо текущего <strong>V</strong>, выполняя это в контексте значения <strong>this</strong> (его возвращает операция <strong>GetThisValue(V)</strong>). При успешном своем завершении метод <strong>[[Set]]</strong> вернет <strong>true</strong>. Тут еще подтянется проверка <strong>IsStrictReference(V)</strong>. На выходе это выглядит так: <strong><em>base.[[Set]](GetReferencedName(V), W, GetThisValue(V))</em></strong> (<em>succes</em>).</li>
                                
-                               <li>При условии, когда внутрннему методу <strong>[[Set]]</strong> не удалось записать новое значение вместо текущего и он вернет <strong>false</strong>, а <strong>IsStrictReference(V)</strong> - <strong>true</strong>, тогда программа выкинет исключение <span>&#8594;</span> <strong>TypeError</strong>.</li>
+                               <li>При условии, когда внутрннему методу <a href="#internal-set"><strong>[[Set]]</strong></a> не удалось записать новое значение вместо текущего и он вернет <strong>false</strong>, а <strong>IsStrictReference(V)</strong> - <strong>true</strong>, тогда программа выкинет исключение <span>&#8594;</span> <strong>TypeError</strong>.</li>
                                
-                               <li>В остальном, вернется результат выполнения <strong>[[Set]]</strong> (<em>succes</em>).</li>
+                               <li>В остальном, вернется результат выполнения <a href="#internal-set"><strong>[[Set]]</strong></a> (<em>succes</em>).</li>
                                
                            </ol>
                        
                        </li>
                        
-                       <li>Когда операция <strong>IsPropertyReference(V)</strong> вернет <strong>false</strong>, тогда алгоритм приступит к последнему шагу. На этом этапе базовое значение ссылки будет соответствовать записи окружения (<strong>Environment Record</strong>). К ней будет применен внутренний метод <strong>SetMutableBinding(N, V, S)</strong>, который записывает новое значение существующей привязке (ее имя вернет операция <strong>GetReferencedName(V)</strong>). Итогом будет выполнение: <strong><em>base.SetMutableBinding(GetReferencedName(V), W, IsStrictReference(V))</em></strong>.</li>
+                       <li>Когда операция <strong>IsPropertyReference(V)</strong> вернет <strong>false</strong>, тогда алгоритм приступит к последнему шагу. На этом этапе базовое значение ссылки будет соответствовать записи окружения (<strong>Environment Record</strong>). К ней будет применен внутренний метод <a href="#set_mut_bind"><strong>SetMutableBinding(N, V, S)</strong></a>, который записывает новое значение существующей привязке (ее имя вернет операция <strong>GetReferencedName(V)</strong>). Итогом будет выполнение: <strong><em>base.SetMutableBinding(GetReferencedName(V), W, IsStrictReference(V))</em></strong>.</li>
                        
                    </ol>
                    
@@ -897,7 +897,7 @@
                
            </section>
            
-           <section>
+           <section id="prop_desc">
               
                <header class="header">
                   
@@ -905,9 +905,9 @@
                    
                </header>
                
-               <p>Тип описания свойства используется, что объяснить управление и воплощение атрибутов свойств объекта. Значениями типа описания свойств являются записи. Имя поля это имя атрибута, а значение поля - это соответствующее значение атрибута.</p>
+               <p>Тип описания свойства используется, что объяснить управление и воплощение атрибутов свойств объекта. Значением типа описания свойств является запись. Имя поля это имя атрибута, а значение поля - это соответствующее значение атрибута.</p>
                
-               <p>Значения описания свойства в дальнейшем могут быть классифицированы как описание свойств данных и описание свойств доступа, что основаны на существовании или использовании определенных полей. Описание свойства данных включает в себя поля с именами <strong>[[Value]]</strong> и <strong>[[Writable]]</strong> (либо одно из них, либо оба). Описание свойства доступа включает в себя поля с именами <strong>[[Get]]</strong> или <strong>[[Set]]</strong> (либо одно из них, либо оба). Каждое описание свойства имеет поля, имена которых <strong>[[Enumerable]]</strong> and <strong>[[Configurable]]</strong>. Есть еще общее и полное описание свойства, которое имеет все соответствующие поля.</p>
+               <p>Значения описания свойства в дальнейшем могут быть классифицированы как описание свойств данных и описание свойств доступа, что основаны на существовании или использовании определенных полей. Описание свойства данных включает в себя поля с именами <strong>[[Value]]</strong> и <strong>[[Writable]]</strong> (либо одно из них, либо оба). Описание свойства доступа включает в себя поля с именами <strong>[[Get]]</strong> или <strong>[[Set]]</strong> (либо одно из них, либо оба). Каждое описание свойства имеет поля, имена которых <strong>[[Enumerable]]</strong> и <strong>[[Configurable]]</strong>. Есть еще общее и полное описание свойства, которое имеет все соответствующие поля.</p>
                
                <p>Существуют абстрактные операции для управления значениями описания свойства.</p>
                
@@ -929,7 +929,7 @@
                
            </section>
            
-           <p>Есть еще типы <a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-lexical-environment-and-environment-record-specification-types">записи окружения</a>, <a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-lexical-environment-and-environment-record-specification-types">лексического окруженния</a> и <a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-data-blocks">блоки данных</a>. Некоторые рассмотрим позже, а некоторые упустим.</p>
+           <p>Есть еще типы <a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-lexical-environment-and-environment-record-specification-types">записи окружения</a>, <a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-lexical-environment-and-environment-record-specification-types">лексического окруженния</a> и <a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-data-blocks">блоки данных</a>.</p>
            
        </section>
        
@@ -1712,7 +1712,7 @@
                
            </article>
            
-           <article>
+           <article id="iscallable-abstr">
               
                <header class="header">
                   
@@ -1800,7 +1800,7 @@
                
            </article>
            
-           <article>
+           <article id="ispropkey">
               
                <header class="header">
                   
@@ -1808,7 +1808,7 @@
                    
                </header>
                
-               <p>Определяет, может ли значение в аргументе (<em>argument</em>) использоваться как ключ для свойства. Алгоритм проверки:</p>
+               <p>Определяет, может ли значение в аргументе (<em>argument</em>) использоваться как ключ свойства. Алгоритм проверки:</p>
                
                <ol class="list">
                    
@@ -2025,7 +2025,7 @@
                
            </article>
            
-           <article>
+           <article id="relation_compare">
               
                <header class="header">
                   
@@ -2033,7 +2033,7 @@
                    
                </header>
                
-               <p>Здесь, в общем, происходит сравнение одного значения с другим в плане "ху ис биггер": <em>x &#60; y</em>. Возвращается <strong>true</strong>, <strong>false</strong> или <strong>undefined</strong>. Эта операция дополнительно имеет булевский индикатор состояния <em>LeftFirst</em> в качестве параметра, который контролирует порядок выполнения операций над значениями <em>x</em> и <em>y</em>. В EcmaScript вычисление происходят слева направо и по дефолту <em>LeftFirst</em> принимает значение <strong>true</strong> (в этом случае сначала обработается тот параметр, что слева в выражении - <em>x</em>). Бывает и такое, что параметр <em>LeftFirst</em> имеет значение <strong>false</strong>, и в этом случае под внимание попадают сперва те параметры, что справа в выражении (т.е. сначала будет выполнен весь комплекс необходимых событий над параметром <em>y</em> и только потом над <em>x</em>). Алгоритм тут весьма объемный:</p>
+               <p>Здесь, в общем, происходит сравнение одного значения с другим в плане "ху ис биггер": <em>x &#60; y</em> (или <em>x &#62; y</em>). Возвращается <strong>true</strong>, <strong>false</strong> или <strong>undefined</strong>. Эта операция дополнительно имеет булевский индикатор состояния <em>LeftFirst</em> в качестве параметра, который контролирует порядок выполнения операций над значениями <em>x</em> и <em>y</em>. В EcmaScript вычисление происходят слева направо и по дефолту <em>LeftFirst</em> принимает значение <strong>true</strong> (в этом случае сначала обработается тот параметр, что слева в выражении - <em>x</em>). Бывает и такое, что параметр <em>LeftFirst</em> имеет значение <strong>false</strong>, и в этом случае под внимание попадают сперва те параметры, что справа в выражении (т.е. сначала будет выполнен весь комплекс необходимых событий над параметром <em>y</em> и только потом над <em>x</em>). Алгоритм тут таков (и представлен он для выражения <em>x &#60; y</em>, так что обратный знак вернет другой результат):</p>
                
                <ol class="list">
                    
@@ -2061,24 +2061,377 @@
                    
                    </li>
                    
-                   <li>Если случилось так, что полученные примитивные значения для <em>x</em> и <em>y</em> (<em>px</em> и <em>py</em> соответственно) строки, тогда
+                   <li>Если случилось так, что полученные примитивные значения для <em>x</em> и <em>y</em> (<em>px</em> и <em>py</em> соответственно) строки (предполагается, что эти строки имеют уже нормализированную форму, дабы не вкатываться в дебри Юникода), тогда
                    
-                       <ol class="list">
+                       <ol class="list" type="a">
                            
-                           <li>если строка <em>y</em> (<em>py</em>) это приставка значения <em>x</em> (<em>px</em>), вернется <strong>false</strong> (этот результат конкретно для выражения <em>x &#60; y</em>, так что если знак обратный, вернется <strong>true</strong>);</li>
+                           <li>если строка <em>y</em> (<em>py</em>) это приставка значения <em>x</em> (<em>px</em>), вернется <strong>false</strong>;</li>
                            
                            <li>если строка <em>x</em> (<em>px</em>) это приставка <em>y</em> (<em>py</em>), вернется <strong>true</strong>;</li>
                            
-                           <li>если же ни одна из полученных строк не является приставкой для другой, значит, под прицел сравнения попадет первый символ строки, т.е. кодовая единица. Само значение этой кодовой единицы - целое число. И имеет она одинаковый наименьший не отрицательный индекс в каждой из строк. Обязательное условие: под сравнение попадают только те кодовые единицы, что не равны друг другу. Так что, если символ с индексом 0 в кажой строке одинаковый, в оборот пойдет следующий символ с индексом 1 и тд. Поэтому, если значение этой кодовой единицы больше той, которая в другой строке, тогда получим соответсвующий результат на выходе. Типа, вот кодовая единица строки <em>x</em> (<em>px</em>) - это <em>m</em>, а для строки <em>y</em> (<em>py</em>) - <em>n</em>. И, если действительно <em>m &#60; n</em>, тогда вернется <strong>true</strong> (в противном случае - <strong>false</strong>). К примеру, выражение <em>"ab" &#60; "az"</em> вернет <strong>true</strong>, поскольку символы <em>"а"</em> одинаковы и сравнение потопает дальше вверх по индексам элементов строк, пока не найдет отличающиеся. Если не найдет и обе строки одинаковы, будет <strong>false</strong>. И, кстати, операция сравнения заканчивается на первом попавшемся символе, что не равен другому. Т.е. выражение <em>"abz" &#60; "az"</em> вернет <strong>true</strong>, поскольку состыковка произошла с символами <em>"b"</em> и <em>"z"</em>, и <em>"z"</em> победил.</li>
-                           
-                           <li></li>
-                           <li></li>
-                           <li></li>
+                           <li>если же ни одна из полученных строк не является приставкой для другой, значит, под прицел сравнения попадает символ строки, т.е. кодовая единица. Само значение этой кодовой единицы - целое число. И имеет данная кодовая единица наименьший не отрицательный индекс, который одинаковый в каждой из строк. Обязательное условие: под сравнение попадают только те кодовые единицы, что не равны друг другу. Так что, если символ с индексом 0 в кажой строке одинаковый, в оборот пойдет следующий символ с индексом 1 и тд. Поэтому, если целочисловое значение конкретной по индексу кодовой единицы в строке <em>x</em> (<em>px</em>) больше, или меньше, чем в строке <em>y</em> (<em>py</em>), тогда получим соответсвующий результат на выходе. Типа, вот кодовая единица строки <em>x</em> (<em>px</em>) - это <em>m</em>, а для строки <em>y</em> (<em>py</em>) - <em>n</em>. И, если действительно <em>m &#60; n</em>, тогда вернется <strong>true</strong> (в противном случае - <strong>false</strong>). К примеру, выражение <em>"ab" &#60; "az"</em> вернет <strong>true</strong>, поскольку символы <em>"а"</em> одинаковые и сравнение поднимется индексом выше, пока не найдет такие элементы строки, что не равны друг другу (как <em>"b"</em> и <em>"z"</em>). Если не найдет и обе строки одинаковые, будет <strong>false</strong>. И, кстати, операция сравнения заканчивается на первом попавшемся символе, что не равен другому. Т.е. выражение <em>"abz" &#60; "az"</em> вернет <strong>true</strong>, поскольку состыковка произошла с символами <em>"b"</em> и <em>"z"</em>, и <em>"z"</em> победил.</li>
                            
                        </ol>
                    
                    </li>
-                   <li></li>
+                   
+                   <li> Если же полученные примитивные значения для <em>x</em> и <em>y</em> не строки, тогда
+                       
+                       <ol class="list" type="a">
+                          
+                           <li> примитивное значение для <em>x</em> (<em>px</em>) будет преобразовано в число <span>&#8594;</span> <a href="#tonumber"><strong>ToNumber(px)</strong></a> (<em>nx</em>);</li>
+                           
+                           <li>и примитивное значение <em>y</em> (<em>py</em>) тоже <span>&#8594;</span> <a href="#tonumber"><strong>ToNumber(py)</strong></a> (<em>ny</em>);</li>
+                           
+                           <li>если число <em>x</em> (<em>nx</em>) это <strong>NaN</strong>, вернется <strong>undefined</strong> (то же самое и для числа <em>y</em> (<em>ny</em>), если оно <strong>NaN</strong>);</li>
+                           
+                           <li>если числовое значение <em>x</em> (<em>nx</em>) такое же, как и <em>y</em> (<em>ny</em>), вернется <strong>false</strong>; </li>
+                           
+                           <li>если значение <em>x</em> (<em>nx</em>) это <strong>+0</strong>, а <em>y</em> (<em>ny</em>) - это <strong>-0</strong>, вернется <strong>false</strong> (и, если махнуть нули наоборот, тоже <strong>false</strong>);</li>
+                           
+                           <li>если значение <em>x</em> (<em>nx</em>) это <strong>+&#8734;</strong>, вернется <strong>false</strong>; а если <em>y</em> (<em>ny</em>) - это <strong>+&#8734;</strong>, вернется <strong>true</strong>;</li>
+                           
+                           <li>если же значение <em>x</em> (<em>nx</em>) это <strong>-&#8734;</strong>, вернется <strong>true</strong>; а если <em>y</em> (<em>ny</em>) - это <strong>-&#8734;</strong>, вернется <strong>false</strong>;</li>
+                           
+                           <li>и если математическое значение <em>x</em> (<em>nx</em>) меньше <em>y</em> (<em>ny</em>) - они оба конечные и не нули, - вернется <strong>true</strong>. В противном случае - <strong>false</strong>.</li>
+                           
+                       </ol>
+                       
+                   </li>
+                   
+               </ol>
+               
+           </article>
+           
+       </section>
+       
+       <section>
+          
+           <header class="header">
+              
+               <h3><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-operations-on-objects">Операции над объектами</a></h3>
+               
+           </header>
+           
+           <article id="get-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-get-o-p">Get ( O, P )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы извлечь значение определенного свойства (<em>P</em>) объекта (<em>O</em>). И ключ свойства (<em>P</em>), и объект (<em>O</em>) передаются ей в качетсве аргументов. Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>И ей всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Выполняется внутренний метод объекта (<em>O</em>) <a href="#internal-get"><strong>[[Get]]</strong></a> <span>&#8594;</span> <strong>O.[[Get]](P, O)</strong>.</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="getv-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-getv">GetV ( V, P )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы извлечь значение определенного свойства (<em>P</em>) значения EcmaScript (<em>V</em>). И если это значение EcmaScript не объект, тогда поиск свойства выполняется, используя объектную оболочку, что соответствует типу значения. Ключ свойства (<em>P</em>) и значение EcmaScript (<em>V</em>) передаются ей в качетсве аргументов. Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Ей всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Чтобы выполнить поиск свойства, необходимо создать объектную оболочку (<em>O</em>) для значения (<em>V</em>) <span>&#8594;</span> <a href="#toobject"><strong>ToObject(V)</strong></a>.</li>
+                   
+                   <li>Дальше выполняется внутренний метод объекта (<em>O</em>) <a href="#internal-get"><strong>[[Get]]</strong></a> <span>&#8594;</span> <strong>O.[[Get]](P, V)</strong>.</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="set-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-set-o-p-v-throw">Set ( O, P, V, Throw )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы записать значение определенного свойства (<em>P</em>) объекта (<em>O</em>). И аргументами тут выступают целевой объект (<em>O</em>), ключ свойства (<em>P</em>), новое значение для свойства (<em>V</em>) и булевский флаг (<em>Throw</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>И флагу (<em>Throw</em>) передается только булевское значение (<strong>Type(Throw)</strong> <span>&#8594;</span> <em>Boolean</em>).</li>
+                   
+                   <li>Выполняется внутренний метод объекта (<em>O</em>) <a href="#internal-set"><strong>[[Set]]</strong></a> <span>&#8594;</span> <strong>O.[[Set]](P, V, O)</strong> (<em>succes</em>).</li>
+                   
+                   <li>Если запись нового значение (<em>success</em>) не прошла успешно, вернув <strong>false</strong>, а булевский флаг получил значение <strong>true</strong>, тогда вылетит <strong>TypeError</strong> (этот булевский флаг получает соответствующие значения в зависимости от того, в каком режиме выполняется код: если в строгом, тогда он получит <strong>true</strong>, а если нет - <strong>false</strong>).</li>
+                   
+                   <li>В остальных случаях вернется результат выполнения записи (<em>success</em>).</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="create_prop-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-createdataproperty">CreateDataProperty ( O, P, V )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы создать новое собственное свойство (<em>P</em>) объекта (<em>O</em>). Аргументами тут выступают целевой объект (<em>O</em>), ключ свойства (<em>P</em>) и значение для свойства (<em>V</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Создается описание нового свойства (<em>newDesc</em>), поля которого получают такие значения <span>&#8594;</span> <strong><a href="#prop_desc">PropertyDescriptor</a>{<a href="#value_attr">[[Value]]</a>: V, <a href="#write_attr">[[Writable]]</a>: true, <a href="#enum_attr">[[Enumerable]]</a>: true, <a href="#config_attr">[[Configurable]]</a>: true}</strong>.</li>
+                   
+                   <li>Затем выполняетмя внутренний метод объекта (<em>O</em>) <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> <span>&#8594;</span> <strong>O.[[DefineOwnProperty]](P, newDesc)</strong>.</li>
+                   
+               </ol>
+               
+               <p>Эта абстрактная операция создает свойство, чьи атрибуты записываются к тем же значениям по умолчанию, что используются для свойств, которые создаются оператором назначения в EcmaScript. В нормальных условиях, такого свойста еще не существует. А если оно существует, и это существующее свойство не настраиваемое (<strong><a href="#config_attr">[[Configurable]]</a>: false</strong>) или объект не расширяемый (<strong><a href="#internal-isextensible">[[IsExtensible]]</a>: false</strong>), <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> вернет <strong>false</strong>.</p>
+               
+           </article>
+           
+           <article id="create_method-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-createmethodproperty">CreateMethodProperty ( O, P, V )</a></h4>
+                   
+               </header>
+            
+               <p>Очень похоже на <a href="#create_prop-abstr"><strong>CreateDataProperty</strong></a>, только есть ньюансы. Эта операция тоже используется, чтобы создать новое собственное свойство (<em>P</em>) объекта (<em>O</em>). Аргументами тут выступают целевой объект (<em>O</em>), ключ свойства (<em>P</em>) и значение для свойства (<em>V</em>). Важный момент: значением свойства (<em>V</em>) является функция. Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Создается описание нового свойства (<em>newDesc</em>), поля которого получают такие значения <span>&#8594;</span> <strong><a href="#prop_desc">PropertyDescriptor</a>{<a href="#value_attr">[[Value]]</a>: V, <a href="#write_attr">[[Writable]]</a>: true, <a href="#enum_attr">[[Enumerable]]</a>: false, <a href="#config_attr">[[Configurable]]</a>: true}</strong>.</li>
+                   
+                   <li>Затем выполняетмя внутренний метод объекта (<em>O</em>) <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> <span>&#8594;</span> <strong>O.[[DefineOwnProperty]](P, newDesc)</strong>.</li>
+                   
+               </ol>
+               
+               <p>Эта абстрактная операция создает метод, чьи атрибуты записывются к тем же значениям по умолчанию, которые используются для встроенных методов и методов, определенных с помощью синтаксиса классов. В нормальных условиях, такого метода еще не существует. А если он существует, и этот существующий метод не настраиваемый (<strong><a href="#config_attr">[[Configurable]]</a>: false</strong>) или объект не расширяемый (<strong><a href="#internal-isextensible">[[IsExtensible]]</a>: false</strong>), <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> вернет <strong>false</strong>.</p>
+               
+           </article>
+           
+           <article id="create_prop_throw-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow ( O, P, V )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы создать новое собственное свойство (<em>P</em>) объекта (<em>O</em>). Она выкидывает <strong>TypeError</strong>, если создание нового свойства не может быть выполнено. Аргументами тут выступают целевой объект (<em>O</em>), ключ свойства (<em>P</em>) и значение для свойства (<em>V</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Выполняется <a href="#create_prop-abstr"><strong>CreateDataProperty ( O, P, V )</strong></a> (<em>success</em>).</li>
+                   
+                   <li>Если <a href="#create_prop-abstr"><strong>CreateDataProperty</strong></a> (<em>success</em>) вернет <strong>false</strong>, тогда вылетит недовольный <strong>TypeError</strong>.</li>
+                   
+                   <li>В ином случае вернется результат выполнения <a href="#create_prop-abstr"><strong>CreateDataProperty</strong></a> (<em>success</em>).</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="define_prop_throw-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-definepropertyorthrow">DefinePropertyOrThrow ( O, P, desc )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы вызвать внутренний метод (<em>P</em>) объекта (<em>O</em>) <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> таким способом, что выкинет <strong>TypeError</strong>, если свойство нельзя обновить. Аргументы здесь это: целевой объект (<em>O</em>), ключ свойства (<em>P</em>) и описание свойства (<em>desc</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Выполняется внутренний метод объекта (<em>O</em>) <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> <span>&#8594;</span> <strong>O.[[DefineOwnProperty]](P, desc)</strong> (<em>success</em>).</li>
+                   
+                   <li>Если <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> (<em>success</em>) вернет <strong>false</strong>, тогда вылетит <strong>TypeError</strong>.</li>
+                   
+                   <li>В ином случае вернется результат выполнения <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> (<em>success</em>).</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="delete_prop_throw-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-deletepropertyorthrow">DeletePropertyOrThrow ( O, P )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы убрать определенное собственное свойство (<em>P</em>) объекта (<em>O</em>). Выкинет <strong>TypeError</strong>, если свойство не настраиваемое (<a href="#config_attr">[[Configurable]]</a>: false). В качестве аргументов тут целевой объект (<em>O</em>) и ключ свойства (<em>P</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Выполняется внутренний метод объекта (<em>O</em>) <a href="#internal-delete"><strong>[[Delete]]</strong></a> <span>&#8594;</span> <strong>O.[[Delete]](P)</strong> (<em>success</em>).</li>
+                   
+                   <li>Если <a href="#internal-delete"><strong>[[Delete]]</strong></a> (<em>success</em>) вернет <strong>false</strong>, тогда вылетит <strong>TypeError</strong>.</li>
+                   
+                   <li>В ином случае вернется результат выполнения <a href="#internal-delete"><strong>[[Delete]]</strong></a> (<em>success</em>).</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="get_method-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-getmethod">GetMethod ( V, P )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы получить значение, ожидаемое как функция, определенного свойства (<em>P</em>) значения EcmaScript (<em>V</em>). Для значения EcmaScript используется объектная оболочка для определенного типа значения. Вызывается она с такими аргументами, как значение EcmaScript (<em>V</em>) и ключ свойства (<em>P</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Выполняется операция <a href="#getv-abstr"><strong>GetV(V, P)</strong></a> (<em>func</em>).</li>
+                   
+                   <li>Если полученный результат <a href="#getv-abstr"><strong>GetV</strong></a> (<em>func</em>) это либо <strong>undefined</strong>, либо <strong>null</strong>, тогда вернется <strong>undefined</strong>.</li>
+                   
+                   <li>Затем проверяется, имеет ли то значение, которое вернула операция <a href="#getv-abstr"><strong>GetV</strong></a>, внутренний метод  вызова <a href="#internal-call"><strong>[[Call]]</strong></a> <span>&#8594;</span> <a href="#iscallable-abstr"><strong>IsCallable(func)</strong></a>. Если <a href="#iscallable-abstr"><strong>IsCallable</strong></a> вернула <strong>false</strong>, вылетит <strong>TypeError</strong>.</li>
+                   
+                   <li>В ином случае вернется результат выполнения <a href="#getv-abstr"><strong>GetV</strong></a> (<em>func</em>).</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="has_prop-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-hasproperty">HasProperty ( O, P )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы определить, имеет ли объект (<em>O</em>) свойство (<em>P</em>) с определенным ключом. Свойство может быть как собственным, так и унаследованным. Вызывается она с такими аргументами, как целевой объект (<em>O</em>) и ключ свойства (<em>P</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Выполняется внутренний метод объекта (<em>O</em>) <a href="#internal-has_prop"><strong>[[HasProperty]]</strong></a> <span>&#8594;</span> <strong>O.[[HasProperty]](P)</strong>.</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="has_prop_o-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-hasownproperty">HasOwnProperty ( O, P )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы определить, имеет ли объект (<em>O</em>) собственное свойство (<em>P</em>) с определенным ключом. Вызывается она с такими аргументами, как целевой объект (<em>O</em>) и ключ свойства (<em>P</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Выполняется внутренний метод объекта (<em>O</em>) <a href="#internal-get_prop_o"><strong>[[GetOwnProperty]]</strong></a> <span>&#8594;</span> <strong>O.[[GetOwnProperty]](P)</strong> (<em>desc</em>).</li>
+                   
+                   <li>Если <a href="#internal-get_prop_o"><strong>[[GetOwnProperty]]</strong></a> вернет <strong>undefined</strong>, на выходе получим <strong>false</strong>.</li>
+                   
+                   <li>В ином случае - <strong>true</strong>.</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="call-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-call">Call ( F, V [ , argumentsList ] )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция вызывает внутренний метод объекта функции (<em>F</em>) <a href="#internal-call"><strong>[[Call]]</strong></a>. Вызывается с аргументами, среди которых объект функции (<em>F</em>), значение EcmaScript (<em>V</em>), которое является <strong>this</strong> для внутреннего метода <a href="#internal-call"><strong>[[Call]]</strong></a>, и список (<em>argumentsList</em>) из аргументов функции (<em>F</em>), что является необязательным. Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Если список (<em>argumentsList</em>) из аргументов функции (<em>F</em>) не был передан, поскольку их нет, тогда новый пустой список (<em>List</em>) будет записан и использоваться как значение (<em>argumentsList</em>) для соответствующего аргумента внутреннего метода <a href="#internal-call"><strong>[[Call]]</strong></a>.</li>
+                   
+                   <li>Если объект функции (<em>F</em>) не вызываемый (<a href="#iscallable-abstr"><strong>IsCallable(F)</strong></a> <span>&#8594;</span> <strong>false</strong>), вылетит <strong>TypeError</strong>.</li>
+                   
+                   <li>Когда все норм, выполняется внутренний метод объекта функции (<em>F</em>) <a href="#internal-call"><strong>[[Call]]</strong></a> <span>&#8594;</span> <strong>F.[[Call]](V, argumentsList)</strong>.</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="constr-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-construct">Construct ( F [ , argumentsList [ , newTarget ]] )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция вызывает внутренний метод объекта функции (<em>F</em>) <a href="#internal-constr"><strong>[[Construct]]</strong></a>. Вызывается с аргументами, среди которых объект функции (<em>F</em>), список из аргументов функции (<em>F</em>) и целевой объект, к которому применяется оператор <strong>new</strong> (<em>newTarget</em>). Последние два аргумента для метода <a href="#internal-constr"><strong>[[Construct]]</strong></a> не являются обязательными. Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Если целевой объект (<em>newTarget</em>) не был передан, тогда объект функции (<em>F</em>) записывается как целевой (<em>newTarget</em>) и используется как значение для соответствующего аргумента внутреннего метода <a href="#internal-construct"><strong>[[Construct]]</strong></a>.</li>
+                   
+                   <li>Если список (<em>argumentsList</em>) из аргументов функции (<em>F</em>) не был передан, поскольку их нет, тогда новый пустой список (<em>List</em>) будет записан и использоваться как значение (<em>argumentsList</em>) для соответствующего аргумента внутреннего метода <a href="#internal-construct"><strong>[[Construct]]</strong></a>.</li>
+                   
+                   <li>Объект функции имеет внутренний метод <a href="#internal-construct"><strong>[[Construct]]</strong></a> (<a href="#isconstr-abstr"><strong>IsConstructor(F)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Целевой объект функции тоже имеет внутренний метод <a href="#internal-construct"><strong>[[Construct]]</strong></a> (<a href="#isconstr-abstr"><strong>IsConstructor(newTarget)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Выполняется внутренний метод объекта функции (<em>F</em>) <a href="#internal-construct"><strong>[[Construct]]</strong></a> <span>&#8594;</span> <strong>F.[[Construct]](argumentsList, newTarget).</strong>.</li>
                    
                </ol>
                
