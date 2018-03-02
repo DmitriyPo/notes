@@ -475,7 +475,7 @@
                             
                         </tr>
                         
-                        <tr id="internal_prev_exts">
+                        <tr id="internal-prev_exts">
                            
                             <td>[[PreventExtensions]]</td>
                              
@@ -491,7 +491,7 @@
                              
                             <td>(<em>propertyKey</em>) <span>&#8594;</span> Undefined | Property Descriptor</td>
                             
-                            <td>Возвращает значение <em>Property Descriptor</em> (описание) для собственного свойства объекта, если оно существует (ключ свойства передается тут в качетсве аргумента - <em>propertyKey</em>). А если возвращает <strong>undefined</strong>, тогда такого свойства не существует в этом объекте.</td>
+                            <td>Возвращает значение <em>Property Descriptor</em> (описание) для собственного свойства объекта, если оно существует (ключ свойства передается тут в качетсве аргумента - <em>propertyKey</em>). А если возвращает <strong>undefined</strong>, тогда такого свойства в этом объекте не существует.</td>
                             
                         </tr>
                         
@@ -551,7 +551,7 @@
                              
                             <td>() <span>&#8594;</span> <em>List of properties</em></td>
                             
-                            <td>Возвращает список, элементами которого есть все ключи значений собственных свойств объекта.</td>
+                            <td>Возвращает список, элементами которого есть все ключи собственных свойств объекта.</td>
                             
                         </tr>
                         
@@ -1756,7 +1756,7 @@
                
            </article>
            
-           <article>
+           <article id="isextensible-abstr">
               
                <header class="header">
                   
@@ -1848,7 +1848,7 @@
                
            </article>
            
-           <article id="samevalue">
+           <article id="samevalue-abstr">
               
                <header class="header">
                   
@@ -2219,7 +2219,7 @@
                    
                </header>
             
-               <p>Очень похоже на <a href="#create_prop-abstr"><strong>CreateDataProperty</strong></a>, только есть ньюансы. Эта операция тоже используется, чтобы создать новое собственное свойство (<em>P</em>) объекта (<em>O</em>). Аргументами тут выступают целевой объект (<em>O</em>), ключ свойства (<em>P</em>) и значение для свойства (<em>V</em>). Важный момент: значением свойства (<em>V</em>) является функция. Шаги выполнения:</p>
+               <p>Очень похоже на <a href="#create_prop-abstr"><strong>CreateDataProperty</strong></a>, только есть ньюансы. Эта операция тоже используется, чтобы создать новое собственное свойство (<em>P</em>) объекта (<em>O</em>). Аргументами тут выступают целевой объект (<em>O</em>), ключ свойства (<em>P</em>) и значение для свойства (<em>V</em>). Важный момент: данное свойство является здесь методом. Шаги выполнения:</p>
                
                <ol class="list">
                   
@@ -2323,7 +2323,7 @@
                    
                </header>
                
-               <p>Эта операция используется, чтобы получить значение, ожидаемое как функция, определенного свойства (<em>P</em>) значения EcmaScript (<em>V</em>). Для значения EcmaScript используется объектная оболочка для определенного типа значения. Вызывается она с такими аргументами, как значение EcmaScript (<em>V</em>) и ключ свойства (<em>P</em>). Шаги выполнения:</p>
+               <p>Эта операция используется, чтобы получить значение, ожидаемое как функция, определенного свойства (<em>P</em>) значения EcmaScript (<em>V</em>). Для значения EcmaScript используется объектная оболочка определенного типа значения. Вызывается она с такими аргументами, как значение EcmaScript (<em>V</em>) и ключ свойства (<em>P</em>). Шаги выполнения:</p>
                
                <ol class="list">
                   
@@ -2432,6 +2432,282 @@
                    <li>Целевой объект функции тоже имеет внутренний метод <a href="#internal-construct"><strong>[[Construct]]</strong></a> (<a href="#isconstr-abstr"><strong>IsConstructor(newTarget)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
                    
                    <li>Выполняется внутренний метод объекта функции (<em>F</em>) <a href="#internal-construct"><strong>[[Construct]]</strong></a> <span>&#8594;</span> <strong>F.[[Construct]](argumentsList, newTarget).</strong>.</li>
+                   
+               </ol>
+               
+               <p>В случае, когда значение целевого объекта (<em>newTarget</em>) не было передано <a href="#constr-abstr"><strong>Construct</strong></a>, тогда эта операция эквивалентна <strong>new F(...argumentsList)</strong>.</p>
+               
+           </article>
+           
+           <article id="set_integr_level-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-setintegritylevel">SetIntegrityLevel ( O, level )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы зафиксировать набор собственных свойств объекта (<em>O</em>). Ей в аргументах передаются объект (<em>O</em>) и уровень надежности (<em>level</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Уровень надежности (<em>level</em>) получает только два значения: <strong>"sealed"</strong> (изолированный) и <strong>"frozen"</strong> (неизменный).</li>
+                   
+                   <li>Выполняется внутренний метод объекта (<em>O</em>) <a href="#internal-prev_exts"><strong>[[PreventExtensions]]</strong></a>, что делает объект нерасширяемым <span>&#8594;</span> <strong>O.[[PreventExtensions]]()</strong> (<em>status</em>).</li>
+                   
+                   <li>Если сделать объект нерясширяемым не получилось (<strong>O.[[PreventExtensions]]()</strong> <span>&#8594;</span> <strong>false</strong>), вернется <strong>false</strong>.</li>
+                   
+                   <li>Если же получилось, тогда следом выполняется внутренний метод объекта (<em>O</em>) <a href="internal-prop_keys_o"><strong>[[OwnPropertyKeys]]</strong></a>, что вернет список собственных свойств <span>&#8594;</span> <strong>O.[[OwnPropertyKeys]]()</strong> (<em>keys</em>).</li>
+                   
+                   <li>Если эта операция имеет изолированный уровень надежности (<em>level</em> <span>&#8594;</span> <strong>"sealed"</strong>), тогда для каждого элемента (<em>k</em>) списка свойств (<em>keys</em>) будет выполнена операция <a href="#define_prop_throw-abstr"><strong>DefinePropertyOrThrow(O, k, PropertyDescriptor{[[Configurable]]: false})</strong></a>.</li>
+                   
+                   <li>В случае, когда эта операция имеет неизменный уровень надежности (<em>level</em> <span>&#8594;</span> <strong>"frozen"</strong>), тогда для каждого элемента (<em>k</em>) списка свойств (<em>keys</em>) будет
+                   
+                       <ol class="list" type="a">
+                           
+                           <li>выполнен внутренний метод объекта (<em>O</em>) <a href="#internal-get_prop_o"><strong>[[GetOwnProperty]]</strong></a>, что возвращает описание свойства <span>&#8594;</span> <strong>O.[[GetOwnProperty]](k)</strong> (<em>currentDesc</em>).</li>
+                           
+                           <li>если <a href="#internal-get_prop_o"><strong>[[GetOwnProperty]]</strong></a> не вернул <strong>undefined</strong>,
+                           
+                               <ol class="list" type="i">
+                                   
+                                   <li>и если элемент (<em>k</em>) списка свойств (<em>keys</em>) является свойством доступа, что имеет атрибут <a href="#get_attr"><strong>[[Get]]</strong></a>, или <a href="#set_attr"><strong>[[Set]]</strong></a>, или оба (<a href="https://www.ecma-international.org/ecma-262/#sec-isaccessordescriptor"><strong>IsAccessorDescriptor ( Desc )</strong></a>) <span>&#8594;</span> <strong>true</strong>), тогда атрибут настройки (<strong>[[Configurable]]</strong>) в описании этого свойства получит значение <strong>false</strong> <span>&#8594;</span> <strong>PropertyDescriptor{[[Configurable]]: false}</strong> (<em>desc</em>);</li>
+                                   
+                                   <li>в ином случае, когда элемент (<em>k</em>) списка свойств (<em>keys</em>) не является свойством доступа (<a href="https://www.ecma-international.org/ecma-262/#sec-isaccessordescriptor"><strong>IsAccessorDescriptor ( Desc )</strong></a>) <span>&#8594;</span> <strong>false</strong>), атрибутам записи (<strong>[[Writable]]</strong>) и настройки (<strong>[[Configurable]]</strong>) в описании свойства будут записаны такие значения  <span>&#8594;</span> <strong>PropertyDescriptor { [[Configurable]]: false, [[Writable]]: false }</strong> (<em>desc</em>).</li>
+                                   
+                               </ol>
+                           
+                           </li>
+                           
+                           <li>Далее будет выполнена операция <a href="#define_prop_throw-abstr"><strong>DefinePropertyOrThrow(O, k, desc)</strong></a>.</li>
+                           
+                       </ol>
+                   
+                   </li>
+                   
+                   <li>В остальном вернется <strong>true</strong>.</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="test_integr_level-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-testintegritylevel">TestIntegrityLevel ( O, level )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы определить, является ли набор собственных свойств объекта зафиксированным. Ей в аргументах передаются объект (<em>O</em>) и уровень надежности (<em>level</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Данная операция всегда применяется к объектам (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Уровень надежности (<em>level</em>) получает только два значения: <strong>"sealed"</strong> (изолированный) и <strong>"frozen"</strong> (неизменный).</li>
+                   
+                   <li>Выполняется операция <a href="#isextensible-abstr"><strong>IsExtensible</strong></a>, что проверяет, расширяемый ли объект (<em>O</em>) <span>&#8594;</span> <strong>IsExtensible(O)</strong> (<em>status</em>).</li>
+                   
+                   <li>Если объект рясширяемый (<strong>IsExtensible(O)</strong> <span>&#8594;</span> <strong>true</strong>), вернется <strong>false</strong> (если объект расширяемый, ни одно его свойство не рассматривается).</li>
+                   
+                   <li>Если же нерасширяемый, далее выполняется внутренний метод объекта (<em>O</em>) <a href="internal-prop_keys_o"><strong>[[OwnPropertyKeys]]</strong></a>, что вернет список собственных свойств <span>&#8594;</span> <strong>O.[[OwnPropertyKeys]]()</strong> (<em>keys</em>).</li>
+                   
+                   <li>Для каждого элемента (<em>k</em>) списка свойств (<em>keys</em>) будет
+
+                       <ol class="list" type="a">
+                           
+                           <li>выполнен внутренний метод объекта (<em>O</em>) <a href="#internal-get_prop_o"><strong>[[GetOwnProperty]]</strong></a>, что возвращает описание свойства <span>&#8594;</span> <strong>O.[[GetOwnProperty]](k)</strong> (<em>currentDesc</em>).</li>
+                           
+                           <li>если <a href="#internal-get_prop_o"><strong>[[GetOwnProperty]]</strong></a> не вернул <strong>undefined</strong>,
+                           
+                               <ol class="list" type="i">
+                                   
+                                   <li>а атрибут настройки (<strong>[[Configurable]]</strong>) в описании этого свойства имеет значение <strong>true</strong> (<strong>currentDesc.[[Configurable]]</strong> <span>&#8594;</span> <strong>true</strong>), вернется <strong>false</strong>;</li>
+                                   
+                                   <li>в случае, когда уровень надежности неизменный (<em>level</em> <span>&#8594;</span> <strong>"frozen"</strong>) и элемент (<em>k</em>) списка свойств (<em>keys</em>) является свойством данных (<a href="https://www.ecma-international.org/ecma-262/#sec-isdatadescriptor"><strong>IsDataDescriptor ( Desc )</strong></a>) <span>&#8594;</span> <strong>true</strong>), и если атрибут записи (<strong>[[Writable]]</strong>) имеет значение <strong>true</strong> (<strong>currentDesc.[[Writable]]</strong> <span>&#8594;</span> <strong>true</strong>), вернется <strong>false</strong>.</li>
+                                   
+                               </ol>
+                           
+                           </li>
+                           
+                       </ol>
+                   
+                   </li>
+                   
+                   <li>В остальном вернется <strong>true</strong>.</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="create_arr-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-createarrayfromlist">CreateArrayFromList ( elements )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы создать массив, чьи элементы представлены в списке (<em>List</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Элементами (<em>elements</em>) в cписке (<em>List</em>) являются все EcmaScript значения.</li>
+                   
+                   <li>Создается массив (<em>array</em>) с нулевой длиной <span>&#8594;</span> <a href="#"><strong>ArrayCreate(0)</strong></a>.</li>
+                   
+                   <li>Далее устанавливается начальный индекс (<em>n</em>), что будет использоваться в качестве ключа свойства массива, начиная с нуля (<em>n = 0</em>).</li>
+                   
+                   <li>Теперь каждый элемент (<em>e</em>) списка (<em>elements</em>)
+
+                       <ol class="list" type="a">
+                           
+                           <li>будет использован для создания свойств массива <span>&#8594;</span> <a href="create_prop-abstr"><strong>CreateDataProperty(array, ToString(n), e)</strong></a>.</li>
+                           
+                           <li>увеличиваем индекс (<em>n</em>) на единицу (<em>n + 1</em>), пока не закончаться все элементы (<em>e</em>) в списке (<em>elements</em>).</li>
+                           
+                       </ol>
+                   
+                   </li>
+                   
+                   <li>Возвращается массив (<em>array</em>).</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="create_lust-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-createlistfromarraylike">CreateListFromArrayLike ( obj [ , elementTypes ] )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы создать список, чьи элементы представлены проиндексированными свойствами массивоподобного объекта (<em>obj</em>). Среди аргументов есть необязательный, значение которого является списком из EcmaScript типов (<em>elementTypes</em>), которыми могут быть значения элементов. Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Если типы элементов (<em>elementTypes</em>) не переданы, тогда этот список будет выглядеть так: <strong>« Undefined, Null, Boolean, String, Symbol, Number, Object »</strong>.</li>
+                   
+                   <li>Если эта операция применяется не к объекту (<em>obj</em>), выкинет <strong>TypeError</strong> (<strong>Type(obj)</strong> не <span>&#8594;</span> <em>Object</em> <span>&#8594;</span> <strong>TypeError</strong>).</li>
+                   
+                   <li>Выполняется операция, чтобы определить длину объекта (<em>len</em>) <span>&#8594;</span> <a href="#tolength-abstr"><strong>ToLength(Get(obj, "length"))</strong></a>.</li>
+                   
+                   <li>Теперь создается новый пустой список (<em>list</em>).</li>
+                   
+                   <li>Устанавливается индекс (<em>index</em>), начиная с нуля (<em>index = 0</em>).</li>
+                   
+                   <li>Теперь повторяем комплекс операций, что ниже, пока <em>index <span>&#60;</span> len</em>
+                       
+                       <ol class="list">
+                          
+                           <li>Индекс преобретает корректное имя (<em>indexName</em>) в виде строки <span>&#8594;</span> <a href="#tostring-abstr"><strong>ToString(index)</strong></a>.</li>
+                           
+                           <li>Затем извлекается значение (<em>next</em>) за полученным ключом <a href="get-abstr"><strong>Get(obj, indexName)</strong></a>.</li>
+                           
+                           <li>Если тип полученного значения (<em>next</em>) не принадлежит к списку типов (<em>elementTypes</em>), выкинет <strong>TypeError</strong> (<strong>Type(next)</strong> не <span>&#8594;</span> <em>elementTypes</em> <span>&#8594;</span> <strong>TypeError</strong>).</li>
+                           
+                           <li>Полученное значение (<em>next</em>) добавляется в список (<em>list</em>), как поледний элемент.</li>
+                           
+                           <li>Затем индекс (<em>index</em>) увеличивается на единицу (<em>index + 1</em>).</li>
+                           
+                       </ol>
+                       
+                   </li>
+                   
+                   <li>Возвращается список (<em>list</em>).</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="invoke-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-invoke">Invoke ( V, P [ , argumentsList ] )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы вызвать метод EcmaScript значения. Аргументы тут точка поиска для свойства, которая заодно и <strong>this</strong> значение (<em>V</em>), ключ свойства (<em>P</em>) и необязательный список значений для аргументов, что передаются методу (<em>argumentsList</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Всегда передается корректный ключ свойства (<a href="#ispropkey"><strong>IsPropertyKey(P)</strong></a> <span>&#8594;</span> <strong>true</strong>).</li>
+                   
+                   <li>Если список значений для аргументов (<em>argumentsList</em>) не был передан, тогда новый пустой список будет использоваться как его значение.</li>
+                   
+                   <li>Выполняется операция, чтобы извлечь значение свойства (<em>P</em>) <span>&#8594;</span> <a href="#getv-abstr"><strong>GetV(V, P)</strong></a> (<em>func</em>).</li>
+                   
+                   <li>Вслед за ней выполняется операция вызова <span>&#8594;</span> <a href="#сфдд-abstr"><strong>Call(func, V, argumentsList)</strong></a>.</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="ord_has_inst-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-ordinaryhasinstance">OrdinaryHasInstance ( C, O )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы определить, наследывает ли объект (<em>O</em>) экземпляр, который предоставляется конструктором (<em>C</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Проверяется, является ли конструктор (<em>C</em>) функцией <span>&#8594;</span> <a href="#iscallable-abstr"><strong>IsCallable(C)</strong></a>. Если нет (результат <strong>false</strong>), вернется <strong>false</strong>.</li>
+                   
+                   <li>Затем выполняется проверка того, имеет ли конструктор (<em>C</em>) внутренний слот <strong>[[BoundTargetFunction]]</strong>. Если имеет, тогда будет выполнена операция для определения того, наследуется ли объект (<em>O</em>) от конструктора, которым будет значение данного слота <span>&#8594;</span> <strong>C.[[BoundTargetFunction]]</strong> (<em>BC</em>) <span>&#8594;</span> <a href="#"><strong>InstanceofOperator(O, BC)</strong></a>.</li>
+                   
+                   <li>После этого рассматривается значение, что передается в качестве объекта (<em>O</em>). Если оно не имеет соответствующий тип <em>Object</em>, вернется <strong>false</strong> <span>&#8594;</span> <strong>Type(O)</strong>.</li>
+                   
+                   <li>Далее выполняется операция, которая извлекает значение свойства <strong>prototype</strong> конструктора (<em>C</em>) <span>&#8594;</span> <a href="#get-abstr"><strong>Get(C, "prototype")</strong></a> (<em>P</em>).</li>
+                   
+                   <li>Если значение (<em>P</em>), полученное на предыдущем этапе не объект, вылетит <strong>TypeError</strong> <span>&#8594;</span> <strong>Type(P)</strong>.</li>
+                   
+                   <li>Теперь будет выполнен внутренний метод, что определяет прототип объекта (<em>O</em>) <span>&#8594;</span> <strong>O.<a href="#internal-get_proto">[[GetPrototypeOf]]()</a></strong> (<em>O</em>).</li>
+                   
+                   <li>Если полученное значение это <strong>null</strong>, тогда вернется <strong>false</strong>.</li>
+                   
+                   <li>Напоследок выполняется операция сравнения прототипов объекта (<em>O</em>) и конструктора (<em>P</em>) <span>&#8594;</span> <a href="#samevalue-abstr"><strong>SameValue(P, O)</strong></a>.</li>
+                   
+               </ol>
+               
+           </article>
+           
+           <article id="spec_constr-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-speciesconstructor">SpeciesConstructor ( O, defaultConstructor )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция используется, чтобы извлечь конструктор для создания объектов, которые явлются производными от объекта (<em>O</em>) в аргументе. Дэфолтный конструктор, что передается в другом аргументе (<em>defaultConstructor</em>), используется в том случае, когда конструктор в свойстве <em>@@species</em> не может быть обнаружен, начиная с объекта в аргументе (<em>O</em>). Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Этой операции всегда передается объект (<strong>Type(O)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                   
+                   <li>Извлекается конструктор объекта (<em>O</em>) <span>&#8594;</span> <a href="#get-abstr"><strong>Get(O, "constructor")</strong></a> (<em>C</em>).</li>
+                   
+                   <li>Если полученный конструктор (<em>C</em>) это <strong>undefined</strong>, вернется дэфолтный конструктор (<em>defaultConstructor</em>).</li>
+                   
+                   <li>И если этот полученный конструктор (<em>C</em>) не объект, выкинет <strong>TypeError</strong> <span>&#8594;</span> <strong>Type(C)</strong>.</li>
+                   
+                   <li>Далее извлекается функция конструктора (<em>C</em>) <span>&#8594;</span> <a href="#get-abstr"><strong>Get(C, @@species)</strong></a> (<em>S</em>). Символ <em>@@species</em> это свойство, что является функцией конструктора, которая используется для создания производных объектов.</li>
+                   
+                   <li>Если значение свойства <em>@@species</em> (<em>S</em>) это либо <strong>undefined</strong>, либо <strong>null</strong>, вернется вернется дэфолтный конструктор (<em>defaultConstructor</em>).</li>
+                   
+                   <li>Выполняется проверка того, имеет ли функция конструктора (<em>S</em>) внутренний метод <a href="#internal-call"><strong>[[Constructor]]</strong></a> <span>&#8594;</span> <a href="#isconstr-abstr"><strong>IsConstructor(S)</strong></a>. Если она <strong>true</strong>, вернется функция конструктора (<em>S</em>).</li>
+                   
+                   <li>В противном случае выкинет <strong>TypeError</strong>.</li>
                    
                </ol>
                
