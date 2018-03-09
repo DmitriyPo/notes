@@ -2316,7 +2316,7 @@
                    
                </header>
                
-               <p>Эта операция используется, чтобы вызвать внутренний метод (<em>P</em>) объекта (<em>O</em>) <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> таким способом, что выкинет <strong>TypeError</strong>, если свойство нельзя обновить. Аргументы здесь это: целевой объект (<em>O</em>), ключ свойства (<em>P</em>) и описание свойства (<em>desc</em>). Шаги выполнения:</p>
+               <p>Эта операция используется, чтобы вызвать внутренний метод (<em>P</em>) объекта (<em>O</em>) <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> таким способом, что выкинет <strong>TypeError</strong>, если свойство нельзя обновить. Аргументы здесь это: целевой объект (<em>O</em>), ключ свойства (<em>P</em>) и описание свойства (<em>desc</em>). Семантика этой операции такая, что при существовании уже такого свойства с определенным ключом (<em>P</em>) он заменяется или затеняется новым, который создается. Шаги выполнения:</p>
                
                <ol class="list">
                   
@@ -3556,7 +3556,7 @@
                    
                    <p>Далее наводится поведение методов записи окружения объекта.</p>
                    
-                   <section>
+                   <article>
                       
                        <header class="header header--center">
                           
@@ -3593,7 +3593,77 @@
                            
                        </ol>
                        
-                   </section>
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-object-environment-records-createmutablebinding-n-d">CreateMutableBinding ( N, D )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Создает в объекте привязки свойство с конкретным именем (<em>N</em>) и инициализирует его со значением <strong>undefined</strong>. Если привязка отмечена как удаляемая (<em>D</em> <span>&#8594;</span> <strong>true</strong>), тогда атрибуту свойства <a href="#config_attr"><strong>[[Configurable]]</strong></a> назначается значение <strong>true</strong>, и наоборот.</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Без особых прелюдий создается свойство в объекте привязки (<em>bindings</em>) с определенным именем (<em>N</em>) и описанием (<em>PropertyDescriptor</em>) <span>&#8594;</span> <strong><a href="#define_prop_throw-abstr">DefinePropertyOrThrow</a>(bindings, N, <a href="#prop_desc">PropertyDescriptor</a>{<a href="#value_attr">[[Value]]</a>: undefined, <a href="#write_attr">[[Writable]]</a>: true, <a href="#enum_attr">[[Enumerable]]</a>: true, <a href="#config_attr">[[Configurable]]</a>: D})</strong></li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-object-environment-records-createimmutablebinding-n-s">CreateImmutableBinding ( N, S )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Данный метод не применяется к записи окружения объекта. Все привязки являются здесь изменяемыми.</p>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-object-environment-records-initializebinding-n-v">InitializeBinding ( N, V )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Назначает значение (<em>V</em>) созданной привязке идентификатора (<em>N</em>), что является свойством объекта привязки.</p>
+                       
+                       <ol class="list">
+                          
+                           <li>В записи окружения объекта (<em>envRec</em>) уже должна быть неинициализированная привязка с конкретным именем (<em>N</em>).</li>
+                           
+                           <li>Регистрирует, что привязка (<em>N</em>) в записи окружения объекта (<em>envRec</em>) инициализирована.</li>
+                           
+                           <li>Назначает значение (<em>V</em>) привязке (<em>N</em>) в записи окружения объекта (<em>envRec</em>) <span>&#8594;</span> <strong>envRec.<a href="#">SetMutableBinding</a>(N, V, false)</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-object-environment-records-setmutablebinding-n-v-s">SetMutableBinding ( N, V, S )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Назначает значение (<em>V</em>) свойству объекта привязки к уонкретным именем (<em>N</em>), что является свойством объекта привязки. Данное свойство (<em>N</em>) уже по нормальному существует, а если нет, или оно не поддается записи, тогда обработка ошибок в этом случае определяется значением идентификатора строгости (<em>S</em>).</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Выполняется запись нового значения (<em>V</em>) определенному свойству (<em>N</em>) объекта привязки (<em>bindings</em>) с указанием на строгость данной привязки (<em>S</em>) <span>&#8594;</span> <strong><a href="#set-abstr">Set</a>(bindings, N, V, S)</strong></li>
+                           
+                       </ol>
+                       
+                   </article>
                    
                </section>
                
