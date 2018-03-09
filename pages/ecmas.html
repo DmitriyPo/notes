@@ -127,71 +127,71 @@
 
                </header>
                
-               <p>Этот тип является набором значений, что могут быть использованы, как ключи свойства объекта. Каждое возможное значение этого типа уникальное и неизменное.</p>
+               <p>Этот тип является набором значений, что могут быть использованы, как ключи свойств объекта. Каждое возможное значение этого типа уникальное и неизменное.</p>
                
-               <p>Известные символы, чьи значения расширяют возможности EcmaScript, наводятся в этой <a href="https://www.ecma-international.org/ecma-262/8.0/index.html#table-1">таблице</a>.</p>
+               <p>Известные символы, чьи значения расширяют возможности EcmaScript, наводятся в этой <a href="#symbol_table">таблице</a>:</p>
                
-               <table>
+               <table id="symbol_table">
                    <caption>Широко-используемые символы</caption>
                    <tr>
                        <th>Сокращенное имя для спецификации</th>
                        <th>Описание ([[Description]])</th>
                        <th>Значение и для чего используется</th>
                    </tr>
-                   <tr>
+                   <tr id="symb_instanse">
                        <td><em>@@hasInstance</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.hasInstance"</strong></td>
+                       <td>Метод, что определяет, является ли объект экземпляром конструктора. Вызывается семантикой оператора <strong>instanceof</strong>.</td>
                    </tr>
-                   <tr>
+                   <tr id="symb_conc_spread">
                        <td><em>@@isConcatSpreadable</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.isConcatSpreadable"</strong></td>
+                       <td>Свойство с булевским значением. Если <strong>true</strong>, определяет, что объект должен быть упорядочен методом <strong>Array.prototype.concat</strong> к элементам массива.</td>
                    </tr>
-                   <tr>
+                   <tr id="symb_iterator">
                        <td><em>@@iterator</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.iterator"</strong></td>
+                       <td>Метод, что возвращает дэфолтный итератор для объекта. Вызывается семантикой выражения <strong>for-of</strong>.</td>
                    </tr>
-                   <tr>
+                   <tr id="symb_match">
                        <td><em>@@match</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.match"</strong></td>
+                       <td>Метод, что сопоставляет регулярное выражение со строкой. Вызывается методом <strong>String.prototype.match</strong>.</td>
                    </tr>
-                   <tr>
+                   <tr id="symb_replace">
                        <td><em>@@replace</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.replace"</strong></td>
+                       <td>Метод, что заменяет совпадающие подстроки строки. Вызывается методом <strong>String.prototype.replace</strong>.</td>
                    </tr>
-                   <tr>
+                   <tr id="symb_search">
                        <td><em>@@search</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.search"</strong></td>
+                       <td>Метод, что возвращает индекс в строке, который соответствует регулярному выражению. Вызывается методом <strong>String.prototype.search</strong>.</td>
                    </tr>
-                   <tr>
+                   <tr id="symb_species">
                        <td><em>@@species</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.species"</strong></td>
+                       <td>Свойство, значением которого является функция-конструктор, что используется для создания производных объектов.</td>
                    </tr>
-                   <tr>
+                   <tr id="symb_split">
                        <td><em>@@split</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.split"</strong></td>
+                       <td>Метод, что разделяет строку по индексам, которые соответствуют регулярному выражению. Вызывается методом <strong>  String.prototype.split</strong>.</td>
                    </tr>
-                   <tr>
+                   <tr id="symb_toprim">
                        <td><em>@@toPrimitive</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.toPrimitive"</strong></td>
+                       <td>Метод, что преобразовывает объект в соответствующее примитивное значение. Вызывается асбтрактной операцией <a href="#toprim-abstr"><strong>ToPrimitive</strong></a></td>
                    </tr>
-                   <tr>
+                   <tr id="symb_tostring">
                        <td><em>@@toStringTag</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.toStringTag"</strong></td>
+                       <td>Свойство со строковым значением, что используется в создании дефолтного строкового описания объекта. Доступ к нему осуществляется через метод <strong>Object.prototype.toString</strong>.</td>
                    </tr>
-                   <tr>
+                   <tr id="symb_unscop">
                        <td><em>@@unscopables</em></td>
-                       <td><strong></strong></td>
-                       <td></td>
+                       <td><strong>"Symbol.unscopables"</strong></td>
+                       <td>Свойство, значением которого есть объект, чьи собственные и унаследованные имена свойств это те, которые исключены из привязок <strong>with</strong> окружения связанного объекта.</td>
                    </tr>
                    
                </table>
@@ -644,7 +644,7 @@
                              
                             <td>(<em>a List of any, Object</em>) <span>&#8594;</span> <em>Object</em></td>
                             
-                            <td>Создает объект, свойства которого получают свои значения из списка аргументов (<em>List of any</em>), что передаются выражению вызова конструктора. Вызывается через операторы <strong>new</strong> и <strong>super</strong>. Когда используется оператор вызова <strong>new</strong>, создается новый объект с определенным прототипом (<em>Object</em>), что во втором аргументе. Объекты, что реализовывают этот метод, называются конструкторами.</td>
+                            <td>Создает объект, свойства которого получают свои значения из списка аргументов (<em>List of any</em>), что передаются выражению вызова конструктора. Вызывается через операторы <strong>new</strong> и <strong>super</strong>. Оператор <strong>new</strong> применяется к определенному объекту (<em>Object</em>), что во втором аргументе. Объекты, что реализовывают этот метод, называются конструкторами.</td>
                             
                         </tr>
                         
@@ -1002,7 +1002,7 @@
            
            <p>Рассмотрим эти абстрактные операции.</p>
            
-           <section id="toprimitive">
+           <section id="toprim-abstr">
               
                <header class="header">
                   
@@ -1112,7 +1112,7 @@
                
            </section>
            
-           <section>
+           <article id="toboolean-abstr">
               
                <header class="header">
                   
@@ -2887,6 +2887,717 @@
            </header>
            
            <p>Объекты-итераторы еще будут рассматриваться далее, а пока пересмотрим те абстрактные операции, что выполняются над ними.</p>
+           
+           <article id="get_iter-abstr">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-getiterator">GetIterator ( obj [ , method ] )</a></h4>
+                   
+               </header>
+               
+               <p>Эта операция возвращает объект-итератор. Шаги выполнения:</p>
+               
+               <ol class="list">
+                  
+                   <li>Если метод (<em>method</em>) объекта (<em>obj</em>), что возвращает итератор не был передан, тогда вместо него будет использован тот метод, который возвращает дэфолтный итератор <span>&#8594;</span> <strong><a href="#get_method-abstr">GetMethod</a>(obj, <a href="#symb_iterator">@@iterator</a>)</strong>.</li>
+                   
+                   <li>Выполняется вызов этого метода (<em>method</em>) в контексте данного объекта (<em>obj</em>) <span>&#8594;</span> <strong><a href="#call-abstr">Call</a>(method, obj)</strong> (<em>iterator</em>).</li>
+                   
+                   <li>И если вернувшийся результат (<em>iterator</em>) не является объектом, выкинет <strong>TypeError</strong> (<strong>Type(iterator)</strong> не <span>&#8594;</span> <em>Object</em> <span>&#8594;</span> <strong>TypeError</strong>).</li>
+                   
+                   <li>В ином случае возвращается итератор (<em>iterator</em>).</li>
+
+               </ol>
+               
+           </article>
+           
+       </section>
+       
+   </section>
+   
+   <section>
+      
+       <header class="header">
+          
+           <h2><a href="https://www.ecma-international.org/ecma-262/#sec-executable-code-and-execution-contexts">Выполняемый код и контекст выполнения</a></h2>
+           
+       </header>
+       
+       <section>
+          
+           <header class="header">
+              
+               <h3><a href="https://www.ecma-international.org/ecma-262/#sec-lexical-environments">Лексическое окружение</a></h3>
+               
+           </header>
+           
+           <p>Лексическое окружение основано на вложенной структуре и определяет взаимосвязь идентификаторов с переменными и функциями. Состоит лексическое окружение из соответствующей <a href="#envir_record">записи</a> и ссылки на внешнее лексическое окружение (такой ссылки может и не быть, если лексическое окружение является глобальным). Обычно лексическое окружение связано с такими определенными синтаксическими структурами (элементами) кода, как объявление функции, выражение блока, или условие <em>Catch</em> выражения <em>Try</em>, и каждый раз создается новое лексическое окружение, когда происходит их вычисление.</p>
+           
+           <p>Запись окружения фиксирует привязки идентификаторов, что создаются внутри области видимости их лексического окружения.</p>
+           
+           <p>Одно лексическое окружение может находится внутри другого, что формирует логическую вложенность для значений. Лексическое окружение, находясь внутри другого, имеет на него ссылку. </p>
+           
+           <p>Есть глобальное лексическое окружение, которое не имеет внешнего, поэтому его значением для ссылки на внешнее лексическое окружение будет <strong>null</strong>.</p>
+           
+           <p>Окружение модуля это лексическое окружение, что содержит привязки для объявлений верхнего уровня модуля, а также импортированные привязки. Внешним окружением модуля является глобальное.</p>
+           
+           <p>Окружение функции это лексическое окружение, что соответствует вызову объекта функции. Это окружение может установить новую привязку <strong>this</strong>. И также охватывает состояние, которое необходимо, чтобы поддержать вызовы метода <strong>super</strong>.</p>
+           
+           <section id="envir_record">
+              
+               <header class="header">
+                  
+                   <h4><a href="https://www.ecma-international.org/ecma-262/#sec-environment-records">Записи окружения</a></h4>
+                   
+               </header>
+               
+               <p>Записи окружения есть двух основных видов: декларативные и объектные. Декларативные записи окружения определяют влияние объявлений функций, переменных и условий <em>Catch</em> выражения <em>Try</em>, что непосредственно связывают привязки идентификаторов с ECMAScript значениями. Объектные записи окружения определяют влияние выражения <strong>with</strong>, что связывает привязки идентификаторов со свойствами какого-то объекта. Существует еще глобальные записи окружения, которые используются для глобальных объявлений. Декларативные записи окружения имеют еще два подкласса: записи для функций и модулей.</p>
+               
+               <p>Есть абстрактные методы, что работают с записями окружения, основной перечень которых наводится в таблице:</p>
+               
+               <table>
+                   <tr>
+                       <th>Метод</th>
+                       <th>Для чего используется</th>
+                   </tr>
+                   <tr>
+                       <td><strong>HasBinding(N)</strong></td>
+                       <td>Определяет, имеет ли запись окружения привязку для определенного имени (<em>N</em>), возвращая булевское значение.</td>
+                   </tr>
+                   <tr>
+                       <td><strong>CreateMutableBinding(N, D)</strong></td>
+                       <td>Создает новую изменяемую неинициализированную привязку с определенным именем (<em>N</em>), которой еще не существует, в записи окружения. Еще этот метод принимает булевский идентификатор, который обозначает, может ли привязка быть удалена (<em>D</em>).</td>
+                   </tr>
+                   <tr>
+                       <td><strong>CreateImmutableBinding(N, S)</strong></td>
+                       <td>Создает новую неизменяемую неинициализированную привязку с определенным именем (<em>N</em>), которой еще не существует, в записи окружения. Еще этот метод принимает булевский идентификатор, который указывает на строгость привязки (<em>S</em>).</td>
+                   </tr>
+                   <tr>
+                       <td><strong>InitializeBinding(N, V)</strong></td>
+                       <td>Записывает значение (<em>V</em>) существующей неиницилизированной привязке с определенным именем (<em>N</em>) в записи окружения и инициализирует ее.</td>
+                   </tr>
+                   <tr>
+                       <td><strong>SetMutableBinding(N, V, S)</strong></td>
+                       <td>Записывает значение (<em>V</em>) существующей привязке с определенным именем (<em>N</em>) из записи окружения. Привязка с данным именем обычно уже существует (если нет, тогда она создается и инициализируется). Еще этот метод принимает булевский идентификатор, который указывает на строгость привязки (<em>S</em>).</td>
+                   </tr>
+                   <tr>
+                       <td><strong>GetBindingValue(N, S)</strong></td>
+                       <td>Возвращает значение (<em>V</em>) существующей привязки с определенным именем (<em>N</em>) из записи окружения. Еще этот метод принимает булевский идентификатор, который указывает на строгость привязки (<em>S</em>).</td>
+                   </tr>
+                   <tr>
+                       <td><strong>DeleteBinding(N)</strong></td>
+                       <td>Удаляет привязку с определенным именем (<em>N</em>), что была обозначена для удаления, из записи окружения, возвращая булевское значение.</td>
+                   </tr>
+                   <tr>
+                       <td><strong>HasThisBinding()</strong></td>
+                       <td>Определяет, устанавливает ли запись окружения привязку <strong>this</strong>, возвращая булевское значение.</td>
+                   </tr>
+                   <tr>
+                       <td><strong>HasSuperBinding()</strong></td>
+                       <td>Определяет, устанавливает ли запись окружения привязку метода <strong>super</strong>, возвращая булевское значение.</td>
+                   </tr>
+                   <tr>
+                       <td><strong>WithBaseObject()</strong></td>
+                       <td>Если запись окружения связана с выражением <strong>with</strong>, вернется объект. В ином случае вернется <strong>undefined</strong>.</td>
+                   </tr>
+               </table>
+               
+               <section>
+                  
+                   <header class="header header--center">
+                      
+                       <h4><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records">Декларативные</a> записи окружения</h4>
+                       
+                   </header>
+                   
+                   <p>Каждая декларативная запись окружения связана с областью видимости программы ECMAScript, что содержит объявления переменной, константы, допущения, класса, модуля, импорта и/или функции. Декларативная запись окружения связывает набор идентификаторов, что определены объявлениями, которые содержаться внутри ее области видимости.</p>
+                   
+                   <p>Поведение методов для декларативных записей окружения наведено ниже.</p>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records-hasbinding-n">HasBinding ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Алгоритм:</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Если декларативная запись окружения (<em>envRec</em>) имеет привязку за конкретным именем (<em>N</em>), вернется <strong>true</strong>.</li>
+                           
+                           <li>Иначе вернется <strong>false</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records-createmutablebinding-n-d">CreateMutableBinding ( N, D )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Алгоритм:</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Данная запись окружения (<em>envRec</em>), к которой применяется этот метод, еще не имеет привязки с конкретным именем  (<em>N</em>).</li>
+                           
+                           <li>Создается изменяемая привязка в записи окружения (<em>envRec</em>) с конкретным именем (<em>N</em>) и регистрируется, как не инициализированная. Эта привязка (<em>N</em>) отмечается и регистрируется в записи окружения (<em>envRec</em>) как удаляемая, если соотвествующему аргументу (<em>D</em>) было передано значение <strong>true</strong> (<em>D</em> <span>&#8594;</span> <strong>true</strong>), и тогда последующий вызов метода <a href="#"><strong>DeleteBinding</strong></a> удалит ее.</li>
+                           
+                           <li>Далее возвращается завершающая запись <span>&#8594;</span> <a href="#"><strong>NormalCompletion(empty)</strong></a>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records-createimmutablebinding-n-s">CreateImmutableBinding ( N, S )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Алгоритм:</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Данная запись окружения (<em>envRec</em>), к которой применяется этот метод, еще не имеет привязки с конкретным именем  (<em>N</em>).</li>
+                           
+                           <li>Создается неизменяемая привязка в записи окружения (<em>envRec</em>) с конкретным именем (<em>N</em>) и регистрируется, как не инициализированная. Эта привязка (<em>N</em>) отмечается и регистрируется в записи окружения (<em>envRec</em>) как строгая, если соотвествующему аргументу (<em>S</em>) было передано значение <strong>true</strong> (<em>S</em> <span>&#8594;</span> <strong>true</strong>).</li>
+                           
+                           <li>Далее возвращается завершающая запись <span>&#8594;</span> <a href="#"><strong>NormalCompletion(empty)</strong></a>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records-initializebinding-n-v">InitializeBinding ( N, V )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Алгоритм:</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Данная запись окружения (<em>envRec</em>), к которой применяется этот метод, имеет неинициализированную привязку с конкретным именем (<em>N</em>).</li>
+                           
+                           <li>Привязке (<em>N</em>) назначается значение (<em>V</em>) в записи окружения (<em>envRec</em>).</li>
+                           
+                           <li>Затем она (<em>N</em>) регистрируется как инициализированная в записи окружения (<em>envRec</em>).</li>
+                           
+                           <li>Далее возвращается завершающая запись <span>&#8594;</span> <a href="#"><strong>NormalCompletion(empty)</strong></a>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records-setmutablebinding-n-v-s">SetMutableBinding ( N, V, S )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Алгоритм:</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Если запись окружения (<em>envRec</em>) не имеет привязки с конкретным именем (<em>N</em>),
+                           
+                               <ol class="list" type="a">
+                                  
+                                   <li>И если метод отмечает привязку как строгую (<em>S</em> <span>&#8594;</span> <strong>true</strong>), тогда выкинет <strong>ReferenceError</strong>.</li>
+                                   
+                                   <li>В случае, когда данный метод не отмечает привязку как строгую, тогда в этой записи окружения (<em>envRec</em>) будет создана изменяемая привязка с соответствующим именем (<em>N</em>), которая отмечена как удаляемая <span>&#8594;</span> <strong>envRec.<a href="#">CreateMutableBinding</a>(N, true)</strong>.</li>
+                                   
+                                   <li>После этого привязке (<em>N</em>) назначается значение (<em>V</em>) и она инициализируется, что регистрируется в записи окружения (<em>envRec</em>) <span>&#8594;</span> <strong>envRec.<a href="#">InitializeBinding</a>(N, V)</strong>.</li>
+                                   
+                                   <li>Возвращается запись завершения <span>&#8594;</span> <a href="#"><strong>NormalCompletion(empty)</strong></a>.</li>
+                                   
+                               </ol>
+                           
+                           </li>
+                           
+                           <li>Если привязка (<em>N</em>) в записи окружения (<em>envRec</em>) отмечается как строгая, тогда соответствующему аргументу (<em>S</em>) записывается значение <strong>true</strong> (<em>S</em> <span>&#8594;</span> <strong>true</strong>).</li>
+                           
+                           <li>Если привязка (<em>N</em>) в записи окружения (<em>envRec</em>) не была инициализирована, выкинет <strong>ReferenceError</strong>.</li>
+                           
+                           <li>Далее, если привязка (<em>N</em>) в записи окружения (<em>envRec</em>) изменяемая, тогда ей назначается новое значение (<em>V</em>).</li>
+                           
+                           <li>Если же привязка (<em>N</em>) в записи окружения (<em>envRec</em>) неизменяемая, тогда будет произведена попытка назначить ей новое значение (<em>V</em>), если привязка (<em>N</em>) не строгая (<em>S</em> <span>&#8594;</span> <strong>false</strong>). Вот только значение привязки (<em>N</em>) останется прежним. В случае, когда привязка (<em>N</em>) строгая (<em>S</em> <span>&#8594;</span> <strong>true</strong>), выкинет <strong>TypeError</strong>.</li>
+                           
+                           <li>Затем возвращается запись завершения <span>&#8594;</span> <a href="#"><strong>NormalCompletion(empty)</strong></a>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records-getbindingvalue-n-s">GetBindingValue ( N, S )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Алгоритм:</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Данная запись окружения (<em>envRec</em>), к которой применяется этот метод, имеет инициализированную привязку с конкретным именем (<em>N</em>).</li>
+                           
+                           <li>Если этот метод применяется к привязке (<em>N</em>), которая не была инициализирована в записи окружения (<em>envRec</em>), выкинет <strong>ReferenceError</strong>.</li>
+                           
+                           <li>Вернется значение (<em>V</em>) привязки (<em>N</em>) в записи окружения (<em>envRec</em>).</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records-deletebinding-n">DeleteBinding ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Алгоритм:</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Данная запись окружения (<em>envRec</em>), к которой применяется этот метод, имеет инициализированную привязку с конкретным именем (<em>N</em>).</li>
+                           
+                           <li>Если привязка (<em>N</em>) не может быть удалена (не обозначена как удаляемая), вернется <strong>false</strong>.</li>
+                           
+                           <li>Привязка (<em>N</em>) удаляется из записи окружения (<em>envRec</em>).</li>
+                           
+                           <li>Возвращается <strong>true</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records-hasthisbinding">HasThisBinding ( )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Обычная декларативная запись окружения не предоставляет привязки <strong>this</strong>, поэтому вернется <strong>false</strong>.</p>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records-hassuperbinding">HasSuperBinding ( )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Обычная декларативная запись окружения не предоставляет привязки <strong>super</strong>, поэтому вернется <strong>false</strong>.</p>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-declarative-environment-records-withbaseobject">WithBaseObject ( )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Декларативная запись окружения всегда возвращает <strong>undefined</strong> выражения <strong>with</strong>.</p>
+                       
+                   </article>
+                   
+                   <section>
+                      
+                       <header class="header header--center">
+                          
+                           <h4><a href="https://www.ecma-international.org/ecma-262/#sec-function-environment-records">Запись окружения функции</a></h4>
+                           
+                       </header>
+                       
+                       <p>Запись окружения функции это декларативная запись окружения, что используется для олицетворения области видимости высшего уровня функции и, если функция не стрелочная (<em>ArrowFunction</em>), предоставляет привязку <strong>this</strong>. Если функция не стрелочная и ссылается на <strong>super</strong>, тогда запись окружения функции содержит еще и состояние, что используется для вызовов метода <strong>super</strong> из функции.</p>
+                       
+                       <p>Запись окружения функции имеет еще дополнительные поля состояния:</p>
+                       
+                       <table>
+                           <tr>
+                               <th>Имя поля</th>
+                               <th>Значение</th>
+                               <th>Смысловое значение</th>
+                           </tr>
+                           <tr>
+                               <td><em>[[ThisValue]]</em></td>
+                               <td>Любое значение ECMAScript</td>
+                               <td>Это значение <strong>this</strong>, что используется для вызова функции.</td>
+                           </tr>
+                           <tr>
+                               <td><em>[[ThisBindingStatus]</em></td>
+                               <td><strong>"lexical"</strong> | <strong>"initialized"</strong> | <strong>"uninitialized"</strong></td>
+                               <td>Если значение здесь <strong>"lexical"</strong>, тогда функция стрелочная, что не имеет локально установленного значения <strong>this</strong>.</td>
+                           </tr>
+                           <tr>
+                               <td><em>[[FunctionObject]]</em></td>
+                               <td><em>Object</em></td>
+                               <td>Объект функции, вызов которого создает запись окружения.</td>
+                           </tr>
+                           <tr>
+                               <td><em>[[HomeObject]]</em></td>
+                               <td><em>Object</em> | <strong>undefined</strong></td>
+                               <td>Если связанная функция имеет доступ к свойтсву <strong>super</strong> и не явдяется стрелочной, тогда значением этого поля является объект, от которого эта функция производная и с которым связана, как метод. Дэфолтное значение это <strong>undefined</strong>.</td>
+                           </tr>
+                           <tr>
+                               <td><em>[[NewTarget]]</em></td>
+                               <td><em>Object</em> | <strong>undefined</strong></td>
+                               <td>Если запись окружения была создана внутренним методом <a href="#internal-construct"><strong>[[Construct]]</strong></a>, тогда значением этого поля является тот объект, к которому применяется параметр вызова <strong>new</strong>.</td>
+                           </tr>
+                       </table>
+                       
+                       <p>Запись окружения функции поддерживает все методы декларативной записи окружения с некоторыми отличиями в методах <a href="#"><strong>HasThisBinding</strong></a> и <a href="#"><strong>HasSuperBinding</strong></a>. Плюс к ним еще добавляются дополнительные методы:</p>
+                       
+                       <table>
+                           <tr>
+                               <th>Метод</th>
+                               <th>Для чего используется</th>
+                           </tr>
+                           <tr>
+                               <td><strong>BindThisValue(V)</strong></td>
+                               <td>Назначает значение полю <em>[[ThisValue]]</em> и регистрирует его как инициализированную привязку <strong>this</strong>.</td>
+                           </tr>
+                           <tr>
+                               <td><strong>GetThisBinding()</strong></td>
+                               <td>Возвращает значение привязки <strong>this</strong> записи окружения. Выкинет <strong>ReferenceErroe</strong>, если привязка <strong>this</strong> не была инициализирована.</td>
+                           </tr>
+                           <tr>
+                               <td><strong>GetSuperBase()</strong></td>
+                               <td>Возвращает объект, что является основой привязки свойства <strong>super</strong> функции в записи окружения. Этот объект извлекается из значения поля <em>[[HomeObject]]</em>. Значение <strong>undefined</strong> указывает, что доступ к свойству <strong>super</strong> будет выдавать ошибки при выполнении.</td>
+                           </tr>
+                       </table>
+                       
+                       <p>Поведение дополнительных методов и тех, что отличаются от методов декларативной записи окружения, рассматривается ниже.</p>
+                       
+                       <article>
+                      
+                           <header class="header header--center">
+
+                               <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-bindthisvalue">BindThisValue ( V )</a></h4>
+
+                           </header>
+
+                           <p>Алгоритм:</p>
+
+                           <ol class="list">
+
+                               <li>Этот метод не используется, когда запись окружения (<em>envRec</em>) создается стрелочной функцией (<em>envRec.[[ThisBindingStatus]]</em> не <span>&#8594;</span> <strong>"lexical"</strong>).</li>
+
+                               <li>Если этот метод используется, когда привязка <strong>this</strong> записи окружения функции (<em>envRec</em>) уже инициализирована, выкинет <strong>ReferenceError</strong> (<em>envRec.[[ThisBindingStatus]]</em> <span>&#8594;</span> <strong>"initialized"</strong> <span>&#8594;</span> <strong>ReferenceError</strong>).</li>
+
+                               <li>Привязке <strong>this</strong> записи окружения функции (<em>envRec</em>) назначается значение <strong>V</strong> (<em>envRec.[[ThisValue]]</em> <span>&#8594;</span> <strong>V</strong>).</li>
+
+                               <li>Далее эта привязка в записи окружения функции (<em>envRec</em>) инициализиурется (<em>envRec.[[ThisBindingStatus]]</em> <span>&#8594;</span> <strong>"initialized"</strong>).</li>
+
+                               <li>Возвращается значение, используемое как <strong>this</strong> (<em>V</em>).</li>
+
+                           </ol>
+
+                       </article>
+                       
+                       <article>
+                      
+                           <header class="header header--center">
+
+                               <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-function-environment-records-hasthisbinding">HasThisBinding ( )</a></h4>
+
+                           </header>
+
+                           <p>Алгоритм:</p>
+
+                           <ol class="list">
+
+                               <li>Если этот метод используется, когда запись окружения (<em>envRec</em>) была создана стрелочной функцией, вернется <strong>false</strong> (<em>envRec.[[ThisBindingStatus]]</em> <span>&#8594;</span> <strong>"lexical"</strong> <span>&#8594;</span> <strong>false</strong>).</li>
+
+                               <li>В ином случае вернется <strong>true</strong>.</li>
+
+                           </ol>
+
+                       </article>
+                       
+                       <article>
+                      
+                           <header class="header header--center">
+
+                               <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-function-environment-records-hassuperbinding">HasSuperBinding ( )</a></h4>
+
+                           </header>
+
+                           <p>Алгоритм:</p>
+
+                           <ol class="list">
+
+                               <li>Если этот метод используется, когда запись окружения (<em>envRec</em>) была создана стрелочной функцией, вернется <strong>false</strong> (<em>envRec.[[ThisBindingStatus]]</em> <span>&#8594;</span> <strong>"lexical"</strong> <span>&#8594;</span> <strong>false</strong>).</li>
+
+                               <li>Если функция, что создает запись окружения, не имеет объекта, который подтягивает существующая привязка метода <strong>super</strong>, тогда вернется <strong>false</strong> (<em>envRec.[[HomeObject]]</em> <span>&#8594;</span> <strong>undefined</strong> <span>&#8594;</span> <strong>false</strong>). Если же имеет, вернется <strong>true</strong>.</li>
+
+                           </ol>
+
+                       </article>
+                       
+                       <article>
+                      
+                           <header class="header header--center">
+
+                               <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-function-environment-records-getthisbinding">GetThisBinding ( )</a></h4>
+
+                           </header>
+
+                           <p>Алгоритм:</p>
+
+                           <ol class="list">
+
+                               <li>Этот метод не используется, когда запись окружения (<em>envRec</em>) создается стрелочной функцией (<em>envRec.[[ThisBindingStatus]]</em> не <span>&#8594;</span> <strong>"lexical"</strong>), поскольку она не имеет привязки <strong>this</strong>.</li>
+
+                               <li>Если этот метод используется, когда привязка <strong>this</strong> записи окружения функции (<em>envRec</em>) еще не инициализирована, выкинет <strong>ReferenceError</strong> (<em>envRec.[[ThisBindingStatus]]</em> <span>&#8594;</span> <strong>"uninitialized"</strong> <span>&#8594;</span> <strong>ReferenceError</strong>).</li>
+                               
+                               <li>Возвращается значение <strong>this</strong> <span>&#8594;</span> <em>envRec.[[ThisValue]]</em>.</li>
+
+                           </ol>
+
+                       </article>
+                       
+                       <article>
+                      
+                           <header class="header header--center">
+
+                               <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-getsuperbase">GetSuperBase ( )</a></h4>
+
+                           </header>
+
+                           <p>Алгоритм:</p>
+
+                           <ol class="list">
+
+                               <li>Извлекается объект, который подтягивает привязка метода <strong>super</strong>, функции, что создает запись окружения <span>&#8594;</span> <em>envRec.[[HomeObject]]</em> (<em>home</em>).</li>
+
+                               <li>Если привязка <strong>super</strong> не связывает функцию с объектом, указывая на его отсуствие, вернется <strong>undefined</strong> (<em>envRec.[[HomeObject]]</em> <span>&#8594;</span> <strong>undefined</strong> <span>&#8594;</span> <strong>undefined</strong>).</li>
+                               
+                               <li>В ином случае, функция будет связана с объектом (<strong>Type(home)</strong> <span>&#8594;</span> <em>Object</em>).</li>
+                               
+                               <li>Возвращается родитель (прототип) этого объекта <span>&#8594;</span> <strong>home.<a href="#internal-get_proto">[[GetPrototypeOf]]</a>()</strong>.</li>
+
+                           </ol>
+
+                       </article>
+                       
+                   </section>
+                   
+                   <section>
+                      
+                       <header class="header header--center">
+                          
+                           <h4><a href="https://www.ecma-international.org/ecma-262/#sec-module-environment-records">Запись окружения модуля</a></h4>
+                           
+                       </header>
+                       
+                       <p>Запись окружения модуля это декларативная запись окружения, что используется для олицетворения внешней области видимости модуля ECMAScript. В дополнение к изменяемым и неизменяемым привязкам запись окружения модуля еще предоставляет незменяемые привязки импорта, что дают отдаленный доступ к целевой привязке, которая существует в другой записи окружения.</p>
+                       
+                       <p>Запись окружения модуля поддерживает все методы, используемые в декларативной записи окружения, с некоторыми изменениями в методах <a href="#"><strong>GetBindingValue</strong></a>, <a href="#"><strong>DeleteBinding</strong></a>, <a href="#"><strong>HasThisBinding</strong></a> и <a href="#"><strong>GetThisBinding</strong></a>. Плюс еще поддерживает дополнительные методы:</p>
+                       
+                       <table>
+                           <tr>
+                               <th>Метод</th>
+                               <th>Для чего используется</th>
+                           </tr>
+                           <tr>
+                               <td><strong>CreateImportBinding(N, M, N2)</strong></td>
+                               <td>Создает в записи окружения своего модуля новую неизменяемую, инициализированную отдаленную привязку, которой еще не существует, с определенным именем (<em>N</em>), что имеет доступ к целевой привязке (<em>N2</em>), которая существует в записи окружения другого модуля (<em>M</em>). Когда осуществляется доступ к значениям новой отдаленной привязки (<em>N</em>), будет получен опосредованный доступ к значениям целевой привязки (<em>N2</em>), поскольку они связаны.</td>
+                           </tr>
+                           <tr>
+                               <td><strong>GetThisBinding()</strong></td>
+                               <td>Возвращает значение привязки <strong>this</strong> записи окружения.</td>
+                           </tr>
+                       </table>
+                       
+                       <p>Поведение этих методов наводится здесь:</p>
+                       
+                       <article>
+                          
+                           <header class="header header--center">
+                              
+                               <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-module-environment-records-getbindingvalue-n-s">GetBindingValue ( N, S )</a></h4>
+                               
+                           </header>
+                           
+                           <p>Алгоритм:</p>
+                           
+                           <ol class="list">
+                              
+                               <li>Привязки записи окружения модуля являются строгими (<em>S</em> <span>&#8594;</span> <strong>true</strong>), потому что модуль это строгий код.</li>
+                               
+                               <li>Этот метод используется, когда привязка с конкретным именем (<em>N</em>) существует в своей записи окружения модуля (<em>envRec</em>).</li>
+                               
+                               <li>Если привязка (<em>N</em>) является отдаленной, тогда вернется значение целевой (<em>N2</em>). По порядку:
+                               
+                                   <ol class="list" type="a">
+                                       
+                                       <li>Отдаленная привязка имеет доступ к окружению другого модуля (<em>M</em>). Построить такой мост доступа в этом модуле (<em>M</em>) помогает целевая привязка (<em>N2</em>). На нее и ссылается отдаленная (<em>N</em>).</li>
+                                       
+                                       <li>И если у этого модуля (<em>M</em>) нет никакого окружения (<em>M.[[Environment]]</em> <span>&#8594;</span> <strong>undefined</strong>), вернется <strong>ReferenceError</strong>.</li>
+                                       
+                                       <li>В ином случае получим запись окружения (<em>targetER</em>) этого модуля (<em>M</em>).</li>
+                                       
+                                       <li>Затем возвращается значение целевой привязки (<em>N2</em>), что находится в записи окружения другого модуля (<em>targetER</em>) <span>&#8594;</span> <strong>targetER.<a href="#">GetBindingValue</a>(N2, true)</strong>.</li>
+                                       
+                                   </ol>
+                               
+                               </li>
+                               
+                               <li>Если же привязка рассматриваемой записи окружения модуля не является отдаленной, при этом она не инициализирована, тогда вернется <strong>ReferenceError</strong>.</li>
+                               
+                               <li>Вернется значение (<em>V</em>) привязки (<em>N</em>) записи окружения модуля (<em>envRec</em>).</li>
+                               
+                           </ol>
+                           
+                       </article>
+                       
+                       <article>
+                          
+                           <header class="header header--center">
+                              
+                               <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-module-environment-records-deletebinding-n">DeleteBinding ( N )</a></h4>
+                               
+                           </header>
+                           
+                           <p>Метод <a href="#"><strong>DeleteBinding</strong></a> не вызывается к привязкам записи окружения модуля.</p>
+                           
+                       </article>
+                       
+                       <article>
+                          
+                           <header class="header header--center">
+                              
+                               <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-module-environment-records-hasthisbinding">HasThisBinding ( )</a></h4>
+                               
+                           </header>
+                           
+                           <p>Запись окружения модуля предоставляет привязку <strong>this</strong>, поэтому вернется <strong>true</strong>.</p>
+                           
+                       </article>
+                       
+                       <article>
+                          
+                           <header class="header header--center">
+                              
+                               <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-module-environment-records-getthisbinding">GetThisBinding ( )</a></h4>
+                               
+                           </header>
+                           
+                           <p>Этот метод возвращает <strong>undefined</strong>, что указывает на отсуствие своего значения <strong>this</strong> (значит, модуль подтягивает <strong>this</strong> с того окружения, где его используют).</p>
+                           
+                       </article>
+                       
+                       <article>
+                          
+                           <header class="header header--center">
+                              
+                               <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-createimportbinding">CreateImportBinding ( N, M, N2 )</a></h4>
+                               
+                           </header>
+                           
+                           <p>Алгоритм:</p>
+                           
+                           <ol class="list">
+                              
+                               <li>Создаваемой привязки (<em>N</em>) еще не существует в записи окружения модуля (<em>envRec</em>).</li>
+                               
+                               <li>Существует другой модуль (<em>M</em>) с его окружением (<em>M.[[Environment]]</em>), который напрямую будет иметь целевую привязку (<em>N2</em>).</li>
+                               
+                               <li>Создается неизменяемая отдаленная привязка в записи окружения своего модуля (<em>envRec</em>) с конкретным именем (<em>N</em>), которая ссылается на другой модуль (<em>M</em>) и целевую привязку в нем (<em>N2</em>), и регистрируется, что новая привязка (<em>N</em>) инициализирована.</li>
+                               
+                               <li>Затем возвращается запись завершения <span>&#8594;</span> <a href="#"><strong>NormalCompletion(empty)</strong></a>.</li>
+                               
+                           </ol>
+                           
+                       </article>
+                       
+                   </section>
+                   
+               </section>
+               
+               <section>
+                  
+                   <header class="header header--center">
+                      
+                       <h4><a href="https://www.ecma-international.org/ecma-262/#sec-object-environment-records">Запись окружения объекта</a></h4>
+                       
+                   </header>
+                   
+                   <p>Каждая запись окружения объекта связана с объектом привязки. Запись окружения объекта связывает набор имен свойств своего объекта привязки, которые являются именам идентификаторов в виде строки. Ключи свойств, что не являются строкой, не включены в набор связанных идентификаторов. Вместе с собственными свойствами в этот набор также входят унаследованные, независимо от значения  их атрибута <a href="#enum_attr"><strong>[[Enumerable]]</strong></a>. Из-за того, что свойства могут быть динамически добавлены и удалены из объекта, набор индентификаторов, которые связаны записью окружения объекта, могут вероятно меняться, как побочный результат операций, выполняющих добавление или удаление свойств. Поэтому каждая привязка, что была создана в результате таких побочных действий, считается изменяемой привязкой, даже если атрибут <a href="#write_attr"><strong>[[Writeable]]</strong></a> соответствующего свойтсва имеет значение <strong>false</strong>. Неизменяемых привязок в записи окружения объекта не существует.</p>
+                   
+                   <p>Запись окружения объекта, созданная для выражения <strong>with</strong>, может предоставить свой объект привязки как неявно определенное значение <strong>this</strong>, что используется для вызовов функции. Данную возможность контролирует идентификатор, что указывает, используется ли запись окружения объекта для выражения <strong>with</strong> (<em>withEnvironment</em>). Он связан с каждой записью окружения объекта и его дэфолтное значение это <strong>false</strong>.</p>
+                   
+                   <p>Далее наводится поведение методов записи окружения объекта.</p>
+                   
+                   <section>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/#sec-object-environment-records-hasbinding-n">HasBinding ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Определяет, имеет ли объект привязки свойство с конкретным именем (<em>N</em>).</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Сначала определяется, имеет ли объект привязки (<em>bindings</em>) конкретное свойство (<em>N</em>) <span>&#8594;</span> <strong><a href="#has_prop-abstr">HasProperty</a>(bindings, N)</strong> (<em>foundBinding</em>).</li>
+                           
+                           <li>Если объект привязки (<em>bindings</em>) этого свойства (<em>N</em>) не имеет (<a href="#has_prop-abstr"><strong>HasProperty</strong></a> <span>&#8594;</span> <strong>false</strong>), вернется <strong>false</strong>.</li>
+                           
+                           <li>Если запись окружения (<em>envRec</em>) не связана с выражением <strong>with</strong> (<em>withEnvironment</em> <span>&#8594;</span> <strong>false</strong>), вернется <strong>true</strong>.</li>
+                           
+                           <li>Если же запись окружения (<em>envRec</em>) связана с выражением <strong>with</strong> (<em>withEnvironment</em> <span>&#8594;</span> <strong>true</strong>), выполняется проверка того, находится ли объект привязки в окружении выражения <strong>with</strong> <span>&#8594;</span> <strong><a href="get-abstr">Get</a>(bindings, <a href="#symb_unscop">@@unscopables</a>)</strong> (<em>unscopables</em>).</li>
+                           
+                           <li>Если получили объект (<strong>Type(unscopables)</strong> <span>&#8594;</span> <em>Object</em>), тогда
+                           
+                               <ol class="list" type="a">
+                                  
+                                   <li>Будет выполнен поиск искомого свойства (<em>N</em>) среди тех (<em>unscopables</em>), кто не попал в окружение <strong>with</strong>, и затем полученный результат сведется к булевскому значению <strong><a href="#toboolean-abstr">ToBoolean</a>(<a href="#get-abstr">Get</a>(unscopables, N))</strong> (<em>blocked</em>).</li>
+                                   
+                                   <li>Полученное булевское значение определяет наличие этого свойства в окружении <strong>with</strong>: если оно <strong>true</strong>, вернется <strong>false</strong>.
+                                   </li>
+                                   
+                               </ol>
+                           
+                           </li>
+                           
+                           <li>Когда все проверки были пройдены до этого момента, вернется <strong>true</strong>.</li>
+                           
+                       </ol>
+                       
+                   </section>
+                   
+               </section>
+               
+           </section>
            
        </section>
        
