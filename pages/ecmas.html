@@ -290,7 +290,7 @@
                             
                             <td>Булевский тип ECMAScript</td>
                             
-                            <td>Этот атрибут указывает на то, возможно ли перезаписать значение атрибута свойства <a href="#value_attr"><strong>[[Value]]</strong></a>. Если значением этого атрибута является <strong>false</strong>, тогда изменить значение атрибута <a href="#value_attr"><strong>[[Value]]</strong></a>, используя внутренний метод объекта <a href="#internal-set"><strong>[[Set]]</strong></a>, не получится.</td>
+                            <td>Этот атрибут указывает на то, возможно ли записать новое значение атрибута свойства <a href="#value_attr"><strong>[[Value]]</strong></a>. Если значением этого атрибута является <strong>false</strong>, тогда изменить значение атрибута <a href="#value_attr"><strong>[[Value]]</strong></a>, используя внутренний метод объекта <a href="#internal-set"><strong>[[Set]]</strong></a>, не получится.</td>
                             
                         </tr>
                         
@@ -306,11 +306,11 @@
                         
                         <tr id="config_attr">
                            
-                            <td>[[Configurable]] (настраиваемый)</td>
+                            <td>[[Configurable]] (изменяемый)</td>
                             
                             <td>Булевский тип ECMAScript</td>
                             
-                            <td>Этот атрибут указывает на то, является ли свойтсво настраиваемым. Если значением этого атрибута является <strong>false</strong>, тогда удалить, или изменить свойство, чтобы оно стало свойством доступа, или изменить его атрибуты (кроме как <a href="#value_attr"><strong>[[Value]]</strong></a>, или меняя <a href="#write_attr"><strong>[[Writable]]</strong></a> на <strong>false</strong>) нельзя.</td>
+                            <td>Этот атрибут указывает на то, является ли свойтсво изменяемым. Если значением этого атрибута является <strong>false</strong>, тогда удалить, или изменить свойство, чтобы оно стало свойством доступа, или изменить его атрибуты (кроме как <a href="#value_attr"><strong>[[Value]]</strong></a>, или меняя <a href="#write_attr"><strong>[[Writable]]</strong></a> на <strong>false</strong>) нельзя.</td>
                             
                         </tr>
                         
@@ -372,7 +372,7 @@
                         
                         <tr>
                            
-                            <td>[[Configurable]] (настраиваемый)</td>
+                            <td>[[Configurable]] (изменяемый)</td>
                             
                             <td>Булевский тип ECMAScript</td>
                             
@@ -422,7 +422,7 @@
                         
                         <tr>
                             
-                            <td>Настраиваемый ([[Configurable]])</td>
+                            <td>Изменяемый ([[Configurable]])</td>
                             
                             <td>false</td>
                             
@@ -548,7 +548,7 @@
                              
                             <td>(<em>propertyKey, Property Descriptor</em>) <span>&#8594;</span> Boolean</td>
                             
-                            <td>Создает или меняет свобственное свойство (<em>propertyKey</em>), чтобы оно имело определенное описание (Property Descriptor). Возвращает <strong>true</strong>, если свойство было создано/обновлено. В противном случае - <strong>false</strong>, если существует одно из следующих состояний: свойство не настраиваемое (<a href="#config_attr"><strong>[[Configurable]]</strong></a>: <strong>false</strong>), объект не расширяемый (<a href="#internal-isextensible"><strong>[[IsExtensible]]</strong></a> <span>&#8594;</span> <strong>false</strong>) или свойства не существует (<a href="#internal-has_prop"><strong>[[HasProperty]]</strong></a> <span>&#8594;</span> <strong>false</strong>).</td>
+                            <td>Создает или меняет свобственное свойство (<em>propertyKey</em>), чтобы оно имело определенное описание (Property Descriptor). Возвращает <strong>true</strong>, если свойство было создано/обновлено. В противном случае - <strong>false</strong>, если существует одно из следующих состояний: свойство не изменяемое (<a href="#config_attr"><strong>[[Configurable]]</strong></a>: <strong>false</strong>), объект не расширяемый (<a href="#internal-isextensible"><strong>[[IsExtensible]]</strong></a> <span>&#8594;</span> <strong>false</strong>) или свойства не существует (<a href="#internal-has_prop"><strong>[[HasProperty]]</strong></a> <span>&#8594;</span> <strong>false</strong>).</td>
                             
                         </tr>
                         
@@ -588,7 +588,7 @@
                              
                             <td>(<em>propertyKey</em>) <span>&#8594;</span> <em>Boolean</em></td>
                             
-                            <td>Удаляет собственное свойство (<em>propertyKey</em>) из объекта. Возвращает <strong>false</strong>, если свойство (<em>propertyKey</em>) не было удалено и все еще находится в объекте, или <strong>true</strong>, если оно было удалено и не находится в объекте. Если свойство не настраиваемое (<a href="#config_attr"><strong>[[Configurable]]</strong></a>: <strong>false</strong>), тогда этот метод вернет <strong>false</strong>.</td>
+                            <td>Удаляет собственное свойство (<em>propertyKey</em>) из объекта. Возвращает <strong>false</strong>, если свойство (<em>propertyKey</em>) не было удалено и все еще находится в объекте, или <strong>true</strong>, если оно было удалено и не находится в объекте. Если свойство не изменяемое (<a href="#config_attr"><strong>[[Configurable]]</strong></a>: <strong>false</strong>), тогда этот метод вернет <strong>false</strong>.</td>
                             
                         </tr>
                         
@@ -2252,7 +2252,7 @@
                    
                </ol>
                
-               <p>Эта абстрактная операция создает свойство, чьи атрибуты записываются к тем же значениям по умолчанию, что используются для свойств, которые создаются оператором назначения в EcmaScript. В нормальных условиях, такого свойста еще не существует. А если оно существует, и это существующее свойство не настраиваемое (<strong><a href="#config_attr">[[Configurable]]</a>: false</strong>) или объект не расширяемый (<strong><a href="#internal-isextensible">[[IsExtensible]]</a>: false</strong>), <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> вернет <strong>false</strong>.</p>
+               <p>Эта абстрактная операция создает свойство, чьи атрибуты записываются к тем же значениям по умолчанию, что используются для свойств, которые создаются оператором назначения в EcmaScript. В нормальных условиях, такого свойста еще не существует. А если оно существует, и это существующее свойство не изменяемое (<strong><a href="#config_attr">[[Configurable]]</a>: false</strong>) или объект не расширяемый (<strong><a href="#internal-isextensible">[[IsExtensible]]</a>: false</strong>), <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> вернет <strong>false</strong>.</p>
                
            </article>
            
@@ -2278,7 +2278,7 @@
                    
                </ol>
                
-               <p>Эта абстрактная операция создает метод, чьи атрибуты записывются к тем же значениям по умолчанию, которые используются для встроенных методов и методов, определенных с помощью синтаксиса классов. В нормальных условиях, такого метода еще не существует. А если он существует, и этот существующий метод не настраиваемый (<strong><a href="#config_attr">[[Configurable]]</a>: false</strong>) или объект не расширяемый (<strong><a href="#internal-isextensible">[[IsExtensible]]</a>: false</strong>), <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> вернет <strong>false</strong>.</p>
+               <p>Эта абстрактная операция создает свойство, чьи атрибуты записывются к тем же значениям по умолчанию, которые используются для встроенных методов и методов, определенных с помощью синтаксиса классов. В нормальных условиях, такого свойства еще не существует. А если он существует, и он не изменяемый (<strong><a href="#config_attr">[[Configurable]]</a>: false</strong>) или объект не расширяемый (<strong><a href="#internal-isextensible">[[IsExtensible]]</a>: false</strong>), <a href="#internal-define_prop_o"><strong>[[DefineOwnProperty]]</strong></a> вернет <strong>false</strong>.</p>
                
            </article>
            
@@ -2342,7 +2342,7 @@
                    
                </header>
                
-               <p>Эта операция используется, чтобы убрать определенное собственное свойство (<em>P</em>) объекта (<em>O</em>). Выкинет <strong>TypeError</strong>, если свойство не настраиваемое (<a href="#config_attr">[[Configurable]]</a>: false). В качестве аргументов тут целевой объект (<em>O</em>) и ключ свойства (<em>P</em>). Шаги выполнения:</p>
+               <p>Эта операция используется, чтобы убрать определенное собственное свойство (<em>P</em>) объекта (<em>O</em>). Выкинет <strong>TypeError</strong>, если свойство не изменяемое (<a href="#config_attr">[[Configurable]]</a>: false). В качестве аргументов тут целевой объект (<em>O</em>) и ключ свойства (<em>P</em>). Шаги выполнения:</p>
                
                <ol class="list">
                   
@@ -2518,9 +2518,9 @@
                            
                                <ol class="list" type="i">
                                    
-                                   <li>и если элемент (<em>k</em>) списка свойств (<em>keys</em>) является свойством доступа, что имеет атрибут <a href="#get_attr"><strong>[[Get]]</strong></a>, или <a href="#set_attr"><strong>[[Set]]</strong></a>, или оба (<a href="https://www.ecma-international.org/ecma-262/#sec-isaccessordescriptor"><strong>IsAccessorDescriptor ( Desc )</strong></a>) <span>&#8594;</span> <strong>true</strong>), тогда атрибут настройки (<strong>[[Configurable]]</strong>) в описании этого свойства получит значение <strong>false</strong> <span>&#8594;</span> <strong>PropertyDescriptor{[[Configurable]]: false}</strong> (<em>desc</em>);</li>
+                                   <li>и если элемент (<em>k</em>) списка свойств (<em>keys</em>) является свойством доступа, что имеет атрибут <a href="#get_attr"><strong>[[Get]]</strong></a>, или <a href="#set_attr"><strong>[[Set]]</strong></a>, или оба (<a href="https://www.ecma-international.org/ecma-262/#sec-isaccessordescriptor"><strong>IsAccessorDescriptor ( Desc )</strong></a>) <span>&#8594;</span> <strong>true</strong>), тогда атрибут изменяемости (<strong>[[Configurable]]</strong>) в описании этого свойства получит значение <strong>false</strong> <span>&#8594;</span> <strong>PropertyDescriptor{[[Configurable]]: false}</strong> (<em>desc</em>);</li>
                                    
-                                   <li>в ином случае, когда элемент (<em>k</em>) списка свойств (<em>keys</em>) не является свойством доступа (<a href="https://www.ecma-international.org/ecma-262/#sec-isaccessordescriptor"><strong>IsAccessorDescriptor ( Desc )</strong></a>) <span>&#8594;</span> <strong>false</strong>), атрибутам записи (<strong>[[Writable]]</strong>) и настройки (<strong>[[Configurable]]</strong>) в описании свойства будут записаны такие значения  <span>&#8594;</span> <strong>PropertyDescriptor { [[Configurable]]: false, [[Writable]]: false }</strong> (<em>desc</em>).</li>
+                                   <li>в ином случае, когда элемент (<em>k</em>) списка свойств (<em>keys</em>) не является свойством доступа (<a href="https://www.ecma-international.org/ecma-262/#sec-isaccessordescriptor"><strong>IsAccessorDescriptor ( Desc )</strong></a>) <span>&#8594;</span> <strong>false</strong>), атрибутам записываемости (<strong>[[Writable]]</strong>) и изменяемости (<strong>[[Configurable]]</strong>) в описании свойства будут записаны такие значения  <span>&#8594;</span> <strong>PropertyDescriptor { [[Configurable]]: false, [[Writable]]: false }</strong> (<em>desc</em>).</li>
                                    
                                </ol>
                            
@@ -2570,9 +2570,9 @@
                            
                                <ol class="list" type="i">
                                    
-                                   <li>а атрибут настройки (<strong>[[Configurable]]</strong>) в описании этого свойства имеет значение <strong>true</strong> (<strong>currentDesc.[[Configurable]]</strong> <span>&#8594;</span> <strong>true</strong>), вернется <strong>false</strong>;</li>
+                                   <li>а атрибут изменяемости (<strong>[[Configurable]]</strong>) в описании этого свойства имеет значение <strong>true</strong> (<strong>currentDesc.[[Configurable]]</strong> <span>&#8594;</span> <strong>true</strong>), вернется <strong>false</strong>;</li>
                                    
-                                   <li>в случае, когда уровень надежности неизменный (<em>level</em> <span>&#8594;</span> <strong>"frozen"</strong>) и элемент (<em>k</em>) списка свойств (<em>keys</em>) является свойством данных (<a href="https://www.ecma-international.org/ecma-262/#sec-isdatadescriptor"><strong>IsDataDescriptor ( Desc )</strong></a>) <span>&#8594;</span> <strong>true</strong>), и если атрибут записи (<strong>[[Writable]]</strong>) имеет значение <strong>true</strong> (<strong>currentDesc.[[Writable]]</strong> <span>&#8594;</span> <strong>true</strong>), вернется <strong>false</strong>.</li>
+                                   <li>в случае, когда уровень надежности неизменный (<em>level</em> <span>&#8594;</span> <strong>"frozen"</strong>) и элемент (<em>k</em>) списка свойств (<em>keys</em>) является свойством данных (<a href="https://www.ecma-international.org/ecma-262/#sec-isdatadescriptor"><strong>IsDataDescriptor ( Desc )</strong></a>) <span>&#8594;</span> <strong>true</strong>), и если атрибут записываемости (<strong>[[Writable]]</strong>) имеет значение <strong>true</strong> (<strong>currentDesc.[[Writable]]</strong> <span>&#8594;</span> <strong>true</strong>), вернется <strong>false</strong>.</li>
                                    
                                </ol>
                            
@@ -2979,7 +2979,7 @@
                    </tr>
                    <tr>
                        <td><strong>SetMutableBinding(N, V, S)</strong></td>
-                       <td>Записывает значение (<em>V</em>) существующей привязке с определенным именем (<em>N</em>) из записи окружения. Привязка с данным именем обычно уже существует (если нет, тогда она создается и инициализируется). Еще этот метод принимает булевский идентификатор, который указывает на строгость привязки (<em>S</em>).</td>
+                       <td>Записывает новое значение (<em>V</em>) существующей привязке с определенным именем (<em>N</em>) из записи окружения. Привязка с данным именем обычно уже существует (если нет, тогда она создается и инициализируется) и имеет какое-то значение, которое этот метод меняет на другое. Еще этот метод принимает булевский идентификатор, который указывает на строгость привязки (<em>S</em>).</td>
                    </tr>
                    <tr>
                        <td><strong>GetBindingValue(N, S)</strong></td>
@@ -3550,7 +3550,7 @@
                        
                    </header>
                    
-                   <p>Каждая запись окружения объекта связана с объектом привязки. Запись окружения объекта связывает набор имен свойств своего объекта привязки, которые являются именам идентификаторов в виде строки. Ключи свойств, что не являются строкой, не включены в набор связанных идентификаторов. Вместе с собственными свойствами в этот набор также входят унаследованные, независимо от значения  их атрибута <a href="#enum_attr"><strong>[[Enumerable]]</strong></a>. Из-за того, что свойства могут быть динамически добавлены и удалены из объекта, набор индентификаторов, которые связаны записью окружения объекта, могут вероятно меняться, как побочный результат операций, выполняющих добавление или удаление свойств. Поэтому каждая привязка, что была создана в результате таких побочных действий, считается изменяемой привязкой, даже если атрибут <a href="#write_attr"><strong>[[Writeable]]</strong></a> соответствующего свойтсва имеет значение <strong>false</strong>. Неизменяемых привязок в записи окружения объекта не существует.</p>
+                   <p>Каждая запись окружения объекта связана с объектом привязки. Запись окружения объекта связывает набор имен свойств своего объекта привязки, которые являются именам идентификаторов в виде строки. Ключи свойств, что не являются строкой, не включены в набор связанных идентификаторов. Вместе с собственными свойствами в этот набор также входят унаследованные, независимо от значения  их атрибута <a href="#enum_attr"><strong>[[Enumerable]]</strong></a>. Из-за того, что свойства могут быть динамически добавлены и удалены из объекта, набор индентификаторов, которые связаны записью окружения объекта, могут вероятно меняться, как побочный результат операций, выполняющих добавление или удаление свойств. Поэтому каждая привязка, что была создана в результате таких побочных действий, считается изменяемой привязкой, даже если атрибут <a href="#write_attr"><strong>[[Writable]]</strong></a> соответствующего свойтсва имеет значение <strong>false</strong>. Неизменяемых привязок в записи окружения объекта не существует.</p>
                    
                    <p>Запись окружения объекта, созданная для выражения <strong>with</strong>, может предоставить свой объект привязки как неявно определенное значение <strong>this</strong>, что используется для вызовов функции. Данную возможность контролирует идентификатор, что указывает, используется ли запись окружения объекта для выражения <strong>with</strong> (<em>withEnvironment</em>). Он связан с каждой записью окружения объекта и его дэфолтное значение это <strong>false</strong>.</p>
                    
@@ -3655,12 +3655,605 @@
                            
                        </header>
                        
-                       <p>Назначает значение (<em>V</em>) свойству объекта привязки к уонкретным именем (<em>N</em>), что является свойством объекта привязки. Данное свойство (<em>N</em>) уже по нормальному существует, а если нет, или оно не поддается записи, тогда обработка ошибок в этом случае определяется значением идентификатора строгости (<em>S</em>).</p>
+                       <p>Назначает значение (<em>V</em>) свойству объекта привязки с конкретным именем (<em>N</em>). Данное свойство (<em>N</em>) уже существует, а если нет, или оно не поддается записи, тогда обработка ошибок в этом случае определяется значением идентификатора строгости (<em>S</em>).</p>
                        
                        <ol class="list">
                           
-                           <li>Выполняется запись нового значения (<em>V</em>) определенному свойству (<em>N</em>) объекта привязки (<em>bindings</em>) с указанием на строгость данной привязки (<em>S</em>) <span>&#8594;</span> <strong><a href="#set-abstr">Set</a>(bindings, N, V, S)</strong></li>
+                           <li>Выполняется запись нового значения (<em>V</em>) определенному свойству (<em>N</em>) объекта привязки (<em>bindings</em>) с указанием на строгость данной привязки (<em>S</em>) <span>&#8594;</span> <strong><a href="#set-abstr">Set</a>(bindings, N, V, S)</strong>.</li>
                            
+                       </ol>
+                       
+                   </article>
+                   
+                    <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-object-environment-records-getbindingvalue-n-s">GetBindingValue ( N, S )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Возвращает значение свойства (<em>N</em>) связанного объекта привязки. Данное свойство (<em>N</em>) уже существует, а если нет,  тогда результат зависит от строгости привязки (<em>S</em>).</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Определяется, существует ли данное свойство (<em>N</em>) в объекте привязки (<em>bindings</em>) <span>&#8594;</span> <strong><a href="#has_prop-abstr">HasProperty</a>(bindings, N)</strong> (<em>value</em>).</li>
+                           
+                           <li>Если такого свойства (<em>N</em>) нет (<em>value</em> <span>&#8594;</span> <strong>false</strong>), и если привязка не строгая (<em>S</em> <span>&#8594;</span> <strong>false</strong>), тогда вернется <strong>undefined</strong>; а если привязка строгая (<em>S</em> <span>&#8594;</span> <strong>true</strong>), выкинет <strong>ReferenceError</strong>.</li>
+                           
+                           <li>А когда такое свойство (<em>N</em>) существует (<em>value</em> <span>&#8594;</span> <strong>true</strong>), будет извлечено его значение <span>&#8594;</span> <strong><a href="#get-abstr">Get</a>(bindings, N)</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-object-environment-records-deletebinding-n">DeleteBinding ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Удаляет привязки, что соответствуют свойствам объекта окружения, у которых атрибут <a href="#config_attr"><strong>[[Configurable]]</strong></a> имеет значение <strong>true</strong>.</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Из своего объекта (<em>bindings</em>) удаляется определенное свойство-привязка (<em>N</em>) <span>&#8594;</span> <strong>bindings.<a href="#internal-delete">[[Delete]]</a>(N)</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-object-environment-records-hasthisbinding">HasThisBinding ( )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Обычная запись окружения объекта не предоставляет привязки <strong>this</strong>, поэтому вернется <strong>false</strong>.</p>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-object-environment-records-hassuperbinding">HasSuperBinding ( )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Обычная запись окружения объекта не предоставляет привязки <strong>super</strong>, поэтому вернется <strong>false</strong>.</p>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-object-environment-records-withbaseobject">WithBaseObject ( )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Обычная запись окружения объекта возвращает <strong>undefined</strong> в качестве базового объекта выражения <strong>with</strong>, если только окружение не было создано для этого выражения, на что укажет соответствующий идентификатор (<em>withEnvironment</em>) со значением <strong>true</strong>.</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Если окружение было создано для выражения <strong>with</strong> (<em>withEnvironment</em> <span>&#8594;</span> <strong>true</strong>), тогда вернется объект привязки для записи окружения (<em>envRec</em>).</li>
+                           
+                           <li>В ином случае, вернется <strong>undefined</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+               </section>
+               
+               <section>
+                  
+                   <header class="header header--center">
+                      
+                       <h4><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records">Глобальная запись окружения</a></h4>
+                       
+                   </header>
+                   
+                   <p>Глобальная запись окружения олицетворяет внешнюю область видимости, которая разделяется всеми элементами скрипта, что обрабатываются в общей области. Глобальная запись окружения предоставляет привязки для встроенных глобальных объектов, их свойств и для всех объявлений высшего уровня, что возникают внутри скрипта.</p>
+                   
+                   <p>Гдобальная запись окружения является смесью из записи окружения объекта и декларативной записи окружения. Запись окружения объекта здесь имеет глобальный объект связанной записи области (<em>Realm Record</em>) в качестве основы. Запись окружения объекта как компонент глобальной записи окружения содержит привязки для всех встроенных глобальных объектов и все привязки, введенные объявлениями функции, генератора, асинхронной функции и выражения переменной, что содержаться в глобальном коде. Привязки всех других ECMAScript объявлений в глобальном коде содержаться в декларативной записи окружения, что является компонентом глобальной записи окружения.</p>
+                   
+                   <p>В глобальном объекте могут быть напрямую созданы свойства, и поэтому запись окружения объекта как компонент может содержать и привязки, что были явно созданы через объявление функции, асинхронной функции, генератора и переменной, а также привязки, созданные неявно, как свойства глобального объекта.</p>
+                   
+                   <p>В глобальной записи окружения есть дополнительные поля:</p>
+                   
+                   <table>
+                       <tr>
+                           <th>Имя поля</th>
+                           <th>Значения</th>
+                           <th>Для чего используется</th>
+                       </tr>
+                       <tr>
+                           <td><em>[[ObjectRecord]]</em></td>
+                           <td>Запись глобального окружения объекта</td>
+                           <td>Объект привязки здесь это глобальный объект. Содержит привязки объявления функции, асинхронной функции, генератора и переменной в глобальном коде для связанной области.</td>
+                       </tr>
+                       <tr>
+                           <td><em>[[GlobalThisValue]]</em></td>
+                           <td>Объект</td>
+                           <td>Значение, которое возвращает <strong>this</strong> в глобальной области видимости.</td>
+                       </tr>
+                       <tr>
+                           <td><em>[[DeclarativeRecord]]</em></td>
+                           <td>Декларативная запись глобального окружения</td>
+                           <td>Содержит привязки для всех объявлений в глобальном коде для связанной области, кроме привязок объявления функции, асинхронной функции, генератора и переменной.</td>
+                       </tr>
+                       <tr>
+                           <td><em>[[VarNames]]</em></td>
+                           <td>Список из элементов в формате строки</td>
+                           <td>Имена в формате строки, что привязаны к объявлениям функции, асинхронной функции, генератора и переменной в глобальном коде для связанной области.</td>
+                       </tr>
+                   </table>
+                   
+                   <p>Также глобальная запись окружения предоставляет дополнительные методы, которые в ней используются:</p>
+                   
+                   <table>
+                       <tr>
+                           <th>Метод</th>
+                           <th>Для чего используется</th>
+                       </tr>
+                       <tr>
+                           <td><strong>GetThisBinding()</strong></td>
+                           <td>Возвращает значение привязки <strong>this</strong> этой записи окружения.</td>
+                       </tr>
+                       <tr>
+                           <td><strong>HasVarDeclaration (N)</strong></td>
+                           <td>Определяет, имеет ли идентификатор (<em>N</em>) в этой записи окружения привязку, что была создана через объявление переменной, генератора, функции и асинхронной функции.</td>
+                       </tr>
+                       <tr>
+                           <td><strong>HasLexicalDeclaration (N)</strong></td>
+                           <td>Определяет, имеет ли идентификатор (<em>N</em>) в этой записи окружения привязку, что была создана через лексическое объявление (объявление классов или <em>const</em> и <em>let</em>).</td>
+                       </tr>
+                       <tr>
+                           <td><strong>HasRestrictedGlobalProperty (N)</strong></td>
+                           <td>Определяет, является ли имя в аргументе (<em>N</em>) именем свойства глобального объекта, которое не может быть перекрытым глобальной лексической привязкой, являясь ограниченным атрибутом изменяемости.</td>
+                       </tr>
+                       <tr>
+                           <td><strong>CanDeclareGlobalVar (N)</strong></td>
+                           <td>Определяет, будет ли успешным вызов соотвествующего метода <strong>CreateGlobalVarBinding</strong> с заданным аргументом (<em>N</em>). Допускаются избыточные объявления переменных и объявления переменных для уже существующих свойств глобального объекта.</td>
+                       </tr>
+                       <tr>
+                           <td><strong>CanDeclareGlobalFunction (N)</strong></td>
+                           <td>Определяет, будет ли успешным вызов соотвествующего метода <strong>CreateGlobalFunctionBinding</strong> с заданным аргументом (<em>N</em>).</td>
+                       </tr>
+                       <tr>
+                           <td><strong>CreateGlobalVarBinding(N, D)</strong></td>
+                           <td>Используется, чтобы создать привязку (<em>N</em>) глобальной переменной (<strong>var</strong>) и нициализировать ей значение <strong>undefined</strong> в компоненте глобальной записи окружения, что возвращает <em>[[ObjectRecord]]</em>, а также зарегистрировать ее имя (<em>N</em>) в списке имен объявлений <em>[[VarList]]</em>. Привязка (<em>N</em>) будет изменяемой. Соответствующее глобальной переменной <strong>var</strong> свойство глобального объекта будет иметь подходящие значения атрибутов. Если привязка уже сущесвтует, она снова используется и допускается, что инициализирована.</td>
+                       </tr>
+                       <tr>
+                           <td><strong>CreateGlobalFunctionBinding(N, V, D)</strong></td>
+                           <td>Используется, чтобы создать привязку (<em>N</em>) глобальной функции (<strong>function</strong>) и инициализировать ей значение (<em>V</em>) в компоненте глобальной записи окружения, что возвращает <em>[[ObjectRecord]]</em>, а также зарегистрировать ее имя (<em>N</em>) в списке имен объявлений <em>[[VarList]]</em>. Привязка (<em>N</em>) будет изменяемой. Соответствующее глобальной функции <strong>function</strong> свойство глобального объекта будет иметь подходящие значения атрибутов. Если привязка уже существует, она заменяется.</td>
+                       </tr>
+                   </table>
+                   
+                   <p>Далее наводится поведение конкретных методов глобальной записи окружения.</p>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-hasbinding-n">HasBinding ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается декларативная запись (<em>DclRec</em>) <span>&#8594;</span> <strong>envRec.[[DeclarativeRecord]]</strong>.</li>
+                           
+                           <li>Выполняется проверка того, существует ли данная привязка (<em>N</em>) в декларативной записи глобального окружения (<em>DclRec</em>) <span>&#8594;</span> <strong>DclRec.HasBinding(N)</strong>. Если сущесвтует, что ознаменуется значением <strong>true</strong>, тогда вернется <strong>true</strong>.</li>
+                           
+                           <li>Если же в декларативной записи глобального окружения (<em>DclRec</em>) этой привязки нет, тогда из глобальной записи окружения (<em>envRec</em>) извлекается запись глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>envRec.[[ObjectRecord]]</strong>.</li>
+                           
+                           <li>И уже в записи глобального окружения объекта (<em>ObjRec</em>) будет выполнен поиск соответствующей привязки (<em>N</em>) <span>&#8594;</span> <strong>ObjRec.HasBinding(N)</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-createmutablebinding-n-d">CreateMutableBinding ( N, D )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Создает изменяемую привязку (<em>N</em>) в декларативной записи глобального окружения.</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается декларативная запись (<em>DclRec</em>) <span>&#8594;</span> <strong>envRec.[[DeclarativeRecord]]</strong>.</li>
+                           
+                           <li>Выполняется проверка того, есть ли уже данная привязка (<em>N</em>) в декларативной записи глобального окружения (<em>DclRec</em>) <span>&#8594;</span> <strong>DclRec.HasBinding(N)</strong>. Если она уже там есть (будет <strong>true</strong>), выкинет <strong>TypeError</strong>.</li>
+                           
+                           <li>А если нет, тогда будет создана соответствующая привязка (<em>N</em>) в декларативной записи глобального окружения (DclRec) <span>&#8594;</span> <strong>DclRec.CreateMutableBinding(N, D)</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-createimmutablebinding-n-s">CreateImmutableBinding ( N, S )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Создает неизменяемую привязку (<em>N</em>) в декларативной записи глобального окружения.</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается декларативная запись (<em>DclRec</em>) <span>&#8594;</span> <strong>envRec.[[DeclarativeRecord]]</strong>.</li>
+                           
+                           <li>Выполняется проверка того, есть ли уже данная привязка (<em>N</em>) в декларативной записи глобального окружения (<em>DclRec</em>) <span>&#8594;</span> <strong>DclRec.HasBinding(N)</strong>. Если она уже там есть (будет <strong>true</strong>), выкинет <strong>TypeError</strong>.</li>
+                           
+                           <li>А если нет, тогда будет создана соответствующая привязка (<em>N</em>) в декларативной записи глобального окружения (DclRec) <span>&#8594;</span> <strong>DclRec.CreateImmutableBinding(N, S)</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-initializebinding-n-v">InitializeBinding ( N, V )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается декларативная запись (<em>DclRec</em>) <span>&#8594;</span> <strong>envRec.[[DeclarativeRecord]]</strong>.</li>
+                           
+                           <li>Выполняется проверка того, есть ли уже данная привязка (<em>N</em>) в декларативной записи глобального окружения (<em>DclRec</em>) <span>&#8594;</span> <strong>DclRec.HasBinding(N)</strong>. Если она уже там есть (будет <strong>true</strong>), тогда ей будет назначено соответствующее значение (<em>V</em>) <span>&#8594;</span> <strong>DclRec.InitializeBinding(N, V)</strong>.</li>
+                           
+                           <li>А если ее там нет, тогда из глобальной записи окружения (<em>envRec</em>) извлекается запись глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>envRec.[[ObjectRecord]]</strong>. Если привязка существует, при этом в деклаларативной записи глобального окружения ее нет, тогда она должна быть в записи глобального окружения объекта.</li>
+                           
+                           <li>Привязке (<em>N</em>) в записи глобального окружения объекта (<em>ObjRec</em>) будет инициализировано значение (<em>V</em>) <span>&#8594;</span> <strong>ObjRec.InitializeBinding(N, V)</strong></li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-setmutablebinding-n-v-s">SetMutableBinding ( N, V, S )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Если привязка неизменяемая и строгая (<em>S</em> <span>&#8594;</span> <strong>true</strong>), выкинет <strong>TypeError</strong>. Если привязки не существует, либо она не поддается записи (<a href="#write_attr"><strong>[[Writable]]</strong></a> <span>&#8594;</span> <strong>false</strong>), тогда обработка ошибок в этом случае будет определена значением строгости (<em>S</em>).</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается декларативная запись (<em>DclRec</em>) <span>&#8594;</span> <strong>envRec.[[DeclarativeRecord]]</strong>.</li>
+                           
+                           <li>Выполняется проверка того, есть ли уже данная привязка (<em>N</em>) в декларативной записи глобального окружения (<em>DclRec</em>) <span>&#8594;</span> <strong>DclRec.HasBinding(N)</strong>. Если она уже там есть (будет <strong>true</strong>), тогда ее текущее значение будет изменено на новое (<em>V</em>) <span>&#8594;</span> <strong>DclRec.SetMutableBinding ( N, V, S )</strong>.</li>
+                           
+                           <li>А если ее там нет, тогда из глобальной записи окружения (<em>envRec</em>) извлекается запись глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>envRec.[[ObjectRecord]]</strong>.</li>
+                           
+                           <li>И уже там привязка (<em>N</em>) получит свое новое значение (<em>V</em>) <span>&#8594;</span> <strong>ObjRec.SetMutableBinding ( N, V, S )</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-getbindingvalue-n-s">GetBindingValue ( N, S )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Если привязка неинициализирована, выкинет <strong>ReferenceError</strong>. Если привязки не существует, либо она не поддается записи (<a href="#write_attr"><strong>[[Writable]]</strong></a> <span>&#8594;</span> <strong>false</strong>), тогда обработка ошибок в этом случае будет определена значением строгости (<em>S</em>).</p>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается декларативная запись (<em>DclRec</em>) <span>&#8594;</span> <strong>envRec.[[DeclarativeRecord]]</strong>.</li>
+                           
+                           <li>Выполняется проверка того, есть ли уже данная привязка (<em>N</em>) в декларативной записи глобального окружения (<em>DclRec</em>) <span>&#8594;</span> <strong>DclRec.HasBinding(N)</strong>. Если она уже там есть (будет <strong>true</strong>), тогда вернется ее текущее значение <span>&#8594;</span> <strong>DclRec.GetBindingValue ( N, S )</strong>.</li>
+                           
+                           <li>А если ее там нет, тогда из глобальной записи окружения (<em>envRec</em>) извлекается запись глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>envRec.[[ObjectRecord]]</strong>.</li>
+                           
+                           <li>И уже оттуда будет извлечено значение привязки (<em>N</em>) <span>&#8594;</span> <strong>ObjRec.GetBindingValue ( N, S )</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-deletebinding-n">DeleteBinding ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается декларативная запись (<em>DclRec</em>) <span>&#8594;</span> <strong>envRec.[[DeclarativeRecord]]</strong>.</li>
+                           
+                           <li>Выполняется проверка того, есть ли уже данная привязка (<em>N</em>) в декларативной записи глобального окружения (<em>DclRec</em>) <span>&#8594;</span> <strong>DclRec.HasBinding(N)</strong>. Если она уже там есть (будет <strong>true</strong>), тогда удаляется <span>&#8594;</span> <strong>DclRec.DeleteBinding ( N )</strong>.</li>
+                           
+                           <li>А если ее там нет, тогда из глобальной записи окружения (<em>envRec</em>) извлекается запись глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>envRec.[[ObjectRecord]]</strong>.</li>
+                           
+                           <li>Затем из этой записи глобального окружения (<em>ObjRec</em>) берется объект привязки, который является глобальным (<em>globalObject</em>), и в нем выполняется поиск этой привязки (<em>N</em>) как свойства <span>&#8594;</span> <strong><a href="#has_prop_o-abstr">HasOwnProperty</a>(globalObject, N)</strong> (<em>existingProp</em>).</li>
+                           
+                           <li>Если свойство с таким именем (<em>N</em>) сущесвтует в глобальном объекте (<em>globalObject</em>), тогда
+                           
+                               <ol class="list" type="a">
+                                  
+                                   <li>Эта привязка (<em>N</em>) удаляется из записи глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>ObjRec.DeleteBinding(N)</strong> (<em>status</em>).</li>
+                                   
+                                   <li>Если удаление привязки (<em>N</em>) было выполнено (<em>status</em> <span>&#8594;</span> <strong>true</strong>),
+                                   
+                                       <ol class="list" type="i">
+                                          
+                                           <li>Берется список имен привязок (<em>varNames</em>), что были объявлены в окружении глобального объекта <span>&#8594;</span> <strong>envRec.[[VarNames]]</strong>.</li>
+                                           
+                                           <li>И если имя удаленной привязки (<em>N</em>) есть в этом списке (<em>varNames</em>), тогда оно из него также удаляется.</li>
+                                           
+                                       </ol>
+                                   
+                                   </li>
+                                   
+                                   <li>Возвращается булевский результат выполнения операции удаления (<em>status</em>).</li>
+                                   
+                               </ol>
+                           
+                           </li>
+                           
+                           <li>В том случае, когда такого свойства-привязки (<em>N</em>) в глобальном объекте (<em>globalObject</em>) не существует, вернется <strong>true</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-hasthisbinding">HasThisBinding ( )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Глобальное окружение имеет привязку <strong>this</strong>, поэтому вернется <strong>true</strong>.</p>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-hassuperbinding">HasSuperBinding ( )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Глобальное окружение не имеет привязки <strong>super</strong>, поэтому вернется <strong>false</strong>.</p>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-withbaseobject">WithBaseObject ( )</a></h4>
+                           
+                       </header>
+                       
+                       <p>Выражение <strong>with</strong> не использует глобальный объект, поэтому вернется <strong>undefined</strong>.</p>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-global-environment-records-getthisbinding">GetThisBinding ( )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Вовзращается значение <strong>this</strong> глобального окружения (<em>envRec</em>) <span>&#8594;</span> <strong>envRec.[[GlobalThisValue]]</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-hasvardeclaration">HasVarDeclaration ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Извлекается список имен привязок (<em>varDeclaredNames</em>) переменных и функций, что были объявлены в глобальном окружении (<em>envRec</em>) <span>&#8594;</span> <strong>envRec.[[VarNames]]</strong>.</li>
+                           
+                           <li>Если в этом списке (<em>varDeclaredNames</em>) есть нужное имя привязки (<em>N</em>), вернется <strong>true</strong>.</li>
+                           
+                           <li>А если его там нет, вернется <strong>false</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-haslexicaldeclaration">HasLexicalDeclaration ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается декларативная запись (<em>DclRec</em>) <span>&#8594;</span> <strong>envRec.[[DeclarativeRecord]]</strong>.</li>
+                           
+                           <li>Выполняется поиск данной привязки (<em>N</em>) в декларативной записи глобального окружения (<em>DclRec</em>) <span>&#8594;</span> <strong>DclRec.HasBinding(N)</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-hasrestrictedglobalproperty">HasRestrictedGlobalProperty ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается запись глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>envRec.[[ObjectRecord]]</strong>.</li>
+                           
+                           <li>Проверяется наличие привязки в качестве свойства с данным именем (<em>N</em>) в глобальном объекте (<em>globalObject</em>) этого окружения (<em>ObjRec</em>) с помощью метода, что возвращает описание свойства <span>&#8594;</span> <strong>globalObject.<a href="#get_prop_o-abstr">[[GetOwnProperty]]</a>(N)</strong> (<em>existingProp</em>).</li>
+                           
+                           <li>Если вместо описания свойства (<em>existingProp</em>) получено <strong>undefined</strong>, тогда такого свойства-привязки нет (<em>N</em>) и вернется <strong>false</strong>.</li>
+                           
+                           <li>Если же вернулось описание (<em>existingProp</em>) свойства (<em>N</em>), в нем проверяется атрибут <a href="#config_attr"><strong>[[Configurable]]</strong></a>, который определяет, является ли свойство изменяемым. Если этот атрибут имеет значение <strong>true</strong>, значит, свойство изменяемое, и тогда вернется <strong>false</strong> (<strong>existingProp.<a href="#config_attr">[[Configurable]]</a>: true</strong> <span>&#8594;</span> <strong>false</strong>).</li>
+                           
+                           <li>А когда свойство не изменяемое, а значит, оно с ограничениями, вернется <strong>true</strong>.</li>
+                           
+                       </ol>
+                       
+                       <p>Глобальная лексическая привязка не может быть создана с тем же именем, что и не настраиваемое свойство глобального объекта. Глобальное свойство <strong>undefined</strong> это его пример.</p>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-candeclareglobalvar">CanDeclareGlobalVar ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается запись глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>envRec.[[ObjectRecord]]</strong>.</li>
+                           
+                           <li>Проверяется, имеет ли глобальный объект (<em>globalObject</em>) этого окружения (<em>ObjRec</em>) привязку в качестве свойства с данным именем (<em>N</em>) <span>&#8594;</span> <strong><a href="#has_prop_o-abstr">HasOwnProperty</a>(globalObject, N)</strong> (<em>hasProperty</em>) (<em>hasProperty</em>).</li>
+                           
+                           <li>Если такое свойство (<em>N</em>) в глобальном объекте (<em>globalObject</em>) есть (<em>hasProperty</em> <span>&#8594;</span> <strong>true</strong>), тогда вернется <strong>true</strong>.</li>
+                           
+                           <li>Если же такого свойства (<em>N</em>) нет (<em>hasProperty</em> <span>&#8594;</span> <strong>false</strong>), тогда проверяется возможность его добавления в глобальный объект (<em>globalObject</em>) <span>&#8594;</span> <strong><a href="#isextensible-abstr">IsExtensible</a>(globalObject)</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-candeclareglobalfunction">CanDeclareGlobalFunction ( N )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается запись глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>envRec.[[ObjectRecord]]</strong>.</li>
+                           
+                           <li>Проверяется наличие в глобальном объекте (<em>globalObject</em>) этого окружения (<em>ObjRec</em>) привязки в качестве свойства с данным именем (<em>N</em>) через метод, что возвращает описание свойства <span>&#8594;</span> <strong>globalObject.<a href="#get_prop_o-abstr">[[GetOwnProperty]]</a>(N)</strong> (<em>existingProp</em>).</li>
+                           
+                           <li>Если вместо описания свойства (<em>existingProp</em>) получено <strong>undefined</strong>, тогда такого свойства-привязки (<em>N</em>) нет и проверяется возможность его добавления в глобальный объект (<em>globalObject</em>) <span>&#8594;</span> <strong><a href="#isextensible-abstr">IsExtensible</a>(globalObject)</strong>.</li>
+                           
+                           <li>Если же вернулось описание (<em>existingProp</em>) свойства (<em>N</em>), в нем проверяется атрибут <a href="#config_attr"><strong>[[Configurable]]</strong></a>, который определяет, является ли свойство изменяемым. Если этот атрибут имеет значение <strong>true</strong>, значит, свойство изменяемое, и вернется <strong>true</strong> (<strong>existingProp.<a href="#config_attr">[[Configurable]]</a>: true</strong> <span>&#8594;</span> <strong>true</strong>).</li>
+                           
+                           <li>В том случае, когда это свойство (<em>N</em>) неизменяемое (<strong>existingProp.<a href="#config_attr">[[Configurable]]</a>: false</strong>), проверяется, является ли оно свойством данных. Если оно такое (<strong>IsDataDescriptor(existingProp)</strong> <span>&#8594;</span> <strong>true</strong>) и атрибуты записывемости и перечислимости имеют значение <strong>true</strong> (<strong>{<a href="#write_attr">[[Writable]]</a>: true, <a href="#enum_attr">[[Enumerable]]</a>: true}</strong>), вернется <strong>true</strong>.</li>
+                           
+                           <li>Если же свойство не изменяемое (<strong><a href="#config_attr">[[Configurable]]</a>: false</strong>), не записываемое (<strong><a href="#write_attr">[[Writable]]</a>: false</strong>) и не перечислимое (<strong><a href="#enum_attr">[[Enumerable]]</a>: false</strong>), тогда вернется <strong>false</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-createglobalvarbinding">CreateGlobalVarBinding ( N, D )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается запись глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>envRec.[[ObjectRecord]]</strong>.</li>
+                           
+                           <li>Проверяется, имеет ли глобальный объект (<em>globalObject</em>) этого окружения (<em>ObjRec</em>) привязку глобальной переменной в качестве свойства с данным именем (<em>N</em>) <span>&#8594;</span> <strong><a href="#has_prop_o-abstr">HasOwnProperty</a>(globalObject, N)</strong> (<em>hasProperty</em>).</li>
+                           
+                           <li>И проверяется возможность добавления этого свойтсва-привязки (<em>N</em>) в глобальный объект (<em>globalObject</em>) <span>&#8594;</span> <strong><a href="#isextensible-abstr">IsExtensible</a>(globalObject)</strong> (<em>extensible</em>).</li>
+                           
+                           <li>Если такого свойства-привязки нет (<em>hasProperty</em> <span>&#8594;</span> <strong>false</strong>), при этом глобальный объект расширяемый (<em>extensible</em> <span>&#8594;</span> <strong>true</strong>), тогда
+                           
+                               <ol class="list" type="a">
+                                  
+                                   <li>Будет создана изменяемая привязка глобальной переменной с данным именем (<em>N</em>) в записи окружения глобального объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>ObjRec.CreateMutableBinding(N, D)</strong>.</li>
+                                   
+                                   <li>И затем она (<em>N</em>) будет инициализирована без значения <span>&#8594;</span> <strong>ObjRec.InitializeBinding(N, undefined)</strong>.</li>
+                                   
+                               </ol>
+                           
+                           </li>
+                           
+                           <li>Извлекается список имен привязок (<em>varDeclaredNames</em>), что были объявлены в окружении глобального объекта <span>&#8594;</span> <strong>envRec.[[VarNames]]</strong>.</li>
+                           
+                           <li>Если в этом списке (<em>varDeclaredNames</em>) еще нет имени созданной привязки (<em>N</em>), тогда оно добавляется в него.</li>
+                           
+                           <li>Создается запись завершения <span>&#8594;</span> <strong>NormalCompletion(empty)</strong>. В случае, когда такое свойство-привязка (<em>N</em>) уже есть (<em>hasProperty</em> <span>&#8594;</span> <strong>true</strong>), или глобальный объект (<em>globalObject</em>) не расширяемый (<em>extensible</em> <span>&#8594;</span> <strong>false</strong>), алгоритм завершит свое выполнение и никакой привязки глобальной переменной в окружении глобального объета создано не будет <span>&#8594;</span> <strong>NormalCompletion(empty)</strong>.</li>
+                           
+                       </ol>
+                       
+                   </article>
+                   
+                   <article>
+                      
+                       <header class="header header--center">
+                          
+                           <h4 class="header__item--notbold"><a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-createglobalfunctionbinding">CreateGlobalFunctionBinding ( N, V, D )</a></h4>
+                           
+                       </header>
+                       
+                       <ol class="list">
+                          
+                           <li>Из глобальной записи окружения (<em>envRec</em>) извлекается запись глобального окружения объекта (<em>ObjRec</em>) <span>&#8594;</span> <strong>envRec.[[ObjectRecord]]</strong>.</li>
+                           
+                           <li>Проверяется наличие в глобальном объекте (<em>globalObject</em>) этого окружения (<em>ObjRec</em>) привязки глоабльной функции в качестве свойства с данным именем (<em>N</em>) через метод, что возвращает описание свойства <span>&#8594;</span> <strong>globalObject.<a href="#get_prop_o-abstr">[[GetOwnProperty]]</a>(N)</strong> (<em>existingProp</em>).</li>
+                           
+                           <li>Если такого свойства-привязки (<em>N</em>) в глобальном объекте нет (<em>existingProp</em> <span>&#8594;</span> <strong>undefined</strong>), или есть и это свойство (<em>N</em>) изменяемое (<strong><a href="#config_attr">[[Configurable]]</a>: true</strong>), тогда описание этого свойства-привязки (<em>N</em>) будет изменено к такому виду <span>&#8594;</span> <strong><a href="#prop_desc">PropertyDescriptor</a>{<a href="value_attr">[[Value]]</a>: V, <a href="#write_attr">[[Writable]]</a>: true, <a href="#enum_attr">[[Enumerable]]</a>: true, <a href="#config_attr">[[Configurable]]</a>: D}</strong> (<em>desc</em>).</li>
+                           
+                            <li>Если же свойство-привязка с таким именем (<em>N</em>) существует и оно не настраиваемое (<strong><a href="#config_attr">[[Configurable]]</a>: true</strong>), будет изменено только значение в описании свойства <span>&#8594;</span> <strong><a href="#prop_desc">PropertyDescriptor</a>{<a href="value_attr">[[Value]]</a>: V}</strong> (<em>desc</em>).</li>
+                           
+                           <li>Определив, каким будет описание (<em>desc</em>) свойства-привязки глобальной функции, создается новая привязка или меняется существующая с таким именем (<em>N</em>) в глобальном объекте (<em>globalObject</em>) <span>&#8594;</span> <strong><a href="#define_prop_or_throw">DefinePropertyOrThrow</a>(globalObject, N, desc)</strong></li>
+                           
+                           <li>Затем эта привязка (<em>N</em>) регистрируется как инициализированная в окружении глобального объекта (<em>ObjRec</em>).</li>
+                           
+                           <li>Этому инициализированному свойтсву-привязке (<em>N</em>) в глобальном объекте (<em>globalObject</em>) записывается значение  (<em>V</em>) <strong><a href="#set-abstr">Set</a>(globalObject, N, V, false)</strong>.</li>
+                           
+                           <li>Извлекается список имен привязок (<em>varDeclaredNames</em>), что были объявлены в окружении глобального объекта <span>&#8594;</span> <strong>envRec.[[VarNames]]</strong>.</li>
+                           
+                           <li>Если в этом списке (<em>varDeclaredNames</em>) еще нет имени созданной привязки (<em>N</em>), тогда оно добавляется в него.</li>
+                           
+                           <li>Создается запись завершения <span>&#8594;</span> <strong>NormalCompletion(empty)</strong>.</li>
+                          
                        </ol>
                        
                    </article>
